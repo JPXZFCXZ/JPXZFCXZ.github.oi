@@ -105,6 +105,61 @@
             z-index: 2;
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(252, 195, 210, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(252, 195, 210, 0.2);
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: var(--secondary-pink);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 8px; }
+        .hamburger span:nth-child(3) { top: 16px; }
+
+        .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 8px;
+        }
+
+        .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 8px;
+        }
+
         /* Sidebar */
         .sidebar {
             width: 360px;
@@ -117,6 +172,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(188, 122, 143, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .sidebar::before {
@@ -177,13 +233,11 @@
             box-shadow: 0 15px 35px rgba(188, 122, 143, 0.2);
         }
 
-        .logo-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            letter-spacing: -0.5px;
+        .logo-img {
+            width: 60px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
         }
 
         @keyframes softPulse {
@@ -348,15 +402,21 @@
             position: relative;
         }
 
-        .hero-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--secondary-pink);
+        .hero-logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo {
+            max-width: 300px;
+            height: auto;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 15px rgba(188, 122, 143, 0.1);
-            letter-spacing: -1px;
-            line-height: 1.1;
+            filter: drop-shadow(0 4px 20px rgba(188, 122, 143, 0.2));
+            transition: all 0.4s ease;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 8px 30px rgba(188, 122, 143, 0.3));
         }
 
         .hero-subtitle {
@@ -530,32 +590,132 @@
             .content-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .main-content {
+                padding: 2.5rem;
+            }
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .container {
                 flex-direction: column;
             }
 
             .sidebar {
-                width: 100%;
-                padding: 2rem 1.5rem;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                z-index: 999;
+                padding: 5rem 1.5rem 2rem;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(30px);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(100%);
+                left: 0;
             }
 
             .main-content {
-                padding: 2rem 1.5rem;
+                padding: 5rem 1.5rem 2rem;
+                width: 100%;
             }
 
-            .hero-title {
-                font-size: 2.5rem;
+            .hero-logo {
+                max-width: 250px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
             .social-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+
+            .social-link {
+                padding: 0.7rem;
+                font-size: 0.75rem;
             }
 
             .shape-1, .shape-2, .shape-3 {
                 display: none;
+            }
+
+            .video-container {
+                min-height: 200px;
+                padding: 1.5rem;
+            }
+
+            .content-card {
+                padding: 1.8rem;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+            }
+
+            .video-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .full-width-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 4rem 1rem 2rem;
+            }
+
+            .hero-logo {
+                max-width: 200px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-cta {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .video-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .sidebar {
+                width: 90%;
+                padding: 4rem 1.2rem 2rem;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .logo-img {
+                width: 50px;
             }
         }
 
@@ -576,6 +736,49 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
         }
+
+        /* Mobile Overlay */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 998;
+            backdrop-filter: blur(5px);
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .logo-img, .hero-logo {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-logo {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -585,12 +788,22 @@
         <div class="shape shape-3"></div>
     </div>
 
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
     <div class="container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="logo-container">
                 <div class="logo">
                     <div class="logo-inner">
-                        <span class="logo-text">dms</span>
+                        <img src="dams_brandbook-24.png" alt="DAMS Logo" class="logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=&quot;color: white; font-weight: 600; font-size: 1.8rem;&quot;>dms</span>'">
                     </div>
                 </div>
                 <h1 class="brand-name">DAMS</h1>
@@ -601,31 +814,31 @@
                 <h3 class="nav-title">Navegación</h3>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#inicio" class="nav-link">
+                        <a href="#inicio" class="nav-link" onclick="closeMobileMenu()">
                             <span class="nav-icon"></span>
                             Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#videos" class="nav-link">
+                        <a href="#videos" class="nav-link" onclick="closeMobileMenu()">
                             <span class="nav-icon"></span>
                             Videos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#mision" class="nav-link">
+                        <a href="#mision" class="nav-link" onclick="closeMobileMenu()">
                             <span class="nav-icon"></span>
                             Misión
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#vision" class="nav-link">
+                        <a href="#vision" class="nav-link" onclick="closeMobileMenu()">
                             <span class="nav-icon"></span>
                             Visión
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#servicios" class="nav-link">
+                        <a href="#servicios" class="nav-link" onclick="closeMobileMenu()">
                             <span class="nav-icon"></span>
                             Servicios
                         </a>
@@ -658,7 +871,10 @@
 
         <main class="main-content">
             <section class="hero-section" id="inicio">
-                <h1 class="hero-title">BELLEZA UNICA</h1>
+                <div class="hero-logo-container">
+                    <img src="dams_brandbook-17.png" alt="DAMS - Belleza Única" class="hero-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <h1 style="display: none; font-family: 'Inter', sans-serif; font-size: 3.5rem; font-weight: 300; color: var(--secondary-pink); margin-bottom: 1rem; text-shadow: 0 2px 15px rgba(188, 122, 143, 0.1); letter-spacing: -1px; line-height: 1.1;">BELLEZA ÚNICA</h1>
+                </div>
                 <p class="hero-subtitle">Creamos eventos de belleza que inspiran y transforman</p>
                 <a href="#videos" class="hero-cta">Ver nuestro trabajo</a>
             </section>
@@ -715,5 +931,92 @@
             </div>
         </main>
     </div>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            sidebar.classList.toggle('mobile-open');
+            overlay.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+            toggle.classList.remove('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile menu when window is resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Preload images for better performance
+        function preloadImages() {
+            const images = ['dams_brandbook-17.png', 'dams_brandbook-24.png'];
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            preloadImages();
+        });
+
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        });
+    </script>
 </body>
 </html>
