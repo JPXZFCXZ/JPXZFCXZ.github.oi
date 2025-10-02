@@ -151,6 +151,24 @@
             z-index: 2;
         }
 
+        /* Mobile Menu Overlay - NEW: Added for closing menu by tapping outside */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
         /* Mobile Menu Toggle - Show only on mobile */
         .mobile-menu-toggle {
             display: none;
@@ -282,6 +300,7 @@
             transform: translateX(-100%);
             display: flex;
             flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .sidebar.mobile-sidebar.mobile-open {
@@ -1074,6 +1093,309 @@
             z-index: 2;
         }
 
+        /* Gallery Section - NEW: Added gallery styles */
+        .gallery-section {
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(252, 195, 210, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--secondary-pink);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(252, 195, 210, 0.2);
+            color: var(--secondary-pink);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* Lightbox Modal - NEW: Added for image viewing */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Privacy Policy Section - NEW: Added privacy policy */
+        .privacy-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(252, 195, 210, 0.3);
+        }
+
+        .privacy-link {
+            color: var(--secondary-pink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-link:hover {
+            color: var(--primary-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Privacy Modal - NEW: Added privacy modal */
+        .privacy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .privacy-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .privacy-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .privacy-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .privacy-close:hover {
+            color: var(--primary-pink);
+            transform: scale(1.1);
+        }
+
+        .privacy-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--secondary-pink);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .privacy-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .privacy-text {
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .privacy-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--secondary-pink);
+            margin: 1.5rem 0 0.8rem 0;
+            text-align: left;
+        }
+
         .full-width-card {
             grid-column: 1 / -1;
             background: rgba(255, 255, 255, 0.4);
@@ -1148,6 +1470,15 @@
                 padding: 2.5rem 1.5rem;
             }
 
+            .gallery-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .privacy-content {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
             .full-width-card {
                 padding: 2.5rem;
             }
@@ -1201,6 +1532,10 @@
                 padding: 2rem 1rem;
             }
 
+            .gallery-section {
+                padding: 2rem 1rem;
+            }
+
             .video-container {
                 min-height: 200px;
             }
@@ -1219,6 +1554,14 @@
             }
 
             .video-title {
+                font-size: 1.6rem;
+            }
+
+            .gallery-title {
+                font-size: 1.6rem;
+            }
+
+            .privacy-title {
                 font-size: 1.6rem;
             }
 
@@ -1328,6 +1671,9 @@
              onerror="this.style.display='none'">
     </div>
 
+    <!-- Mobile Menu Overlay - NEW: Added for closing menu by tapping outside -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
@@ -1423,6 +1769,12 @@
                             Servicios
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#galeria" class="nav-link" onclick="smoothScrollTo('#galeria'); closeMobileMenu();">
+                            <span class="nav-icon"></span>
+                            Galería
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -1508,6 +1860,7 @@
                     </p>
                 </div>
 
+                <!-- Gallery Section - NEW: Added gallery section -->
                 <div class="content-card" id="galeria">
                     <h2 class="card-title">Galería</h2>
                     <p class="card-text">
@@ -1516,13 +1869,101 @@
                 </div>
             </div>
 
+            <!-- Gallery Section - NEW: Added gallery section -->
+            <section class="gallery-section" id="gallery">
+                <h2 class="gallery-title">Nuestra Galería</h2>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery items will be generated by JavaScript -->
+                </div>
+            </section>
+
             <div class="full-width-card">
                 <h2 class="card-title">¿Listo para crear algo extraordinario?</h2>
                 <p class="card-text">
                     Únete a nosotros en el mundo de la belleza y la moda. Creamos experiencias que transforman, inspiran y conectan a profesionales de toda la industria.
                 </p>
             </div>
+
+            <!-- Privacy Section - NEW: Added privacy policy link -->
+            <div class="privacy-section">
+                <a href="#" class="privacy-link" onclick="openPrivacyModal(); return false;">
+                    <span>Aviso de Privacidad</span>
+                </a>
+            </div>
         </main>
+    </div>
+
+    <!-- Lightbox Modal - NEW: Added for image viewing -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox(); event.stopPropagation()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation()">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation()">›</button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Privacy Modal - NEW: Added privacy modal -->
+    <div class="privacy-modal" id="privacyModal" onclick="closePrivacyModal()">
+        <div class="privacy-content" onclick="event.stopPropagation()">
+            <button class="privacy-close" onclick="closePrivacyModal()">×</button>
+            <h2 class="privacy-title">Aviso de Privacidad</h2>
+            
+            <p class="privacy-text">
+                En DAMS Agencia, nos comprometemos a proteger y respetar su privacidad. Este aviso explica cómo recopilamos, usamos y protegemos su información personal.
+            </p>
+
+            <h3 class="privacy-section-title">Información que recopilamos</h3>
+            <p class="privacy-text">
+                Recopilamos información que usted nos proporciona directamente, como nombre, dirección de correo electrónico, número de teléfono y cualquier otra información que decida compartir con nosotros a través de formularios de contacto, registros o comunicaciones directas.
+            </p>
+
+            <h3 class="privacy-section-title">Uso de la información</h3>
+            <p class="privacy-text">
+                Utilizamos su información para:
+            </p>
+            <ul class="privacy-text" style="padding-left: 1.5rem;">
+                <li>Proporcionar nuestros servicios y responder a sus consultas</li>
+                <li>Enviar información sobre nuestros eventos y servicios</li>
+                <li>Mejorar nuestra página web y servicios</li>
+                <li>Cumplir con obligaciones legales y regulatorias</li>
+            </ul>
+
+            <h3 class="privacy-section-title">Protección de datos</h3>
+            <p class="privacy-text">
+                Implementamos medidas de seguridad técnicas y organizativas para proteger su información personal contra accesos no autorizados, alteración, divulgación o destrucción.
+            </p>
+
+            <h3 class="privacy-section-title">Cookies y tecnologías similares</h3>
+            <p class="privacy-text">
+                Nuestra página web utiliza cookies para mejorar su experiencia de usuario. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo. Puede configurar su navegador para rechazar todas las cookies o para indicar cuándo se está enviando una cookie.
+            </p>
+
+            <h3 class="privacy-section-title">Sus derechos</h3>
+            <p class="privacy-text">
+                Usted tiene derecho a:
+            </p>
+            <ul class="privacy-text" style="padding-left: 1.5rem;">
+                <li>Acceder a la información personal que tenemos sobre usted</li>
+                <li>Solicitar la corrección de información inexacta</li>
+                <li>Solicitar la eliminación de su información personal</li>
+                <li>Oponerse al procesamiento de su información personal</li>
+                <li>Solicitar la transferencia de su información a otra organización</li>
+            </ul>
+
+            <h3 class="privacy-section-title">Contacto</h3>
+            <p class="privacy-text">
+                Si tiene alguna pregunta sobre este aviso de privacidad o sobre cómo manejamos su información personal, puede contactarnos a través de:
+            </p>
+            <p class="privacy-text">
+                Correo electrónico: privacidad@damsagencia.com<br>
+                Teléfono: +52 55 1234 5678
+            </p>
+
+            <p class="privacy-text">
+                <strong>Última actualización:</strong> Enero 2024
+            </p>
+        </div>
     </div>
 
     <script>
@@ -1537,6 +1978,9 @@
                     document.getElementById('loadingScreen').style.display = 'none';
                 }, 500);
             }, 2000); // Show for 2 seconds
+            
+            // Initialize gallery after page load
+            initializeGallery();
         });
 
         // Video loading functions
@@ -1582,13 +2026,15 @@
             }
         }
 
-        // Mobile menu functionality - Without overlay
+        // Mobile menu functionality - With overlay
         function toggleMobileMenu() {
             const mobileSidebar = document.getElementById('mobile-sidebar');
             const toggle = document.querySelector('.mobile-menu-toggle');
+            const overlay = document.getElementById('mobileMenuOverlay');
             
             mobileSidebar.classList.toggle('mobile-open');
             toggle.classList.toggle('active');
+            overlay.classList.toggle('active');
             
             // Prevent body scroll when menu is open
             if (mobileSidebar.classList.contains('mobile-open')) {
@@ -1608,9 +2054,11 @@
         function closeMobileMenu() {
             const mobileSidebar = document.getElementById('mobile-sidebar');
             const toggle = document.querySelector('.mobile-menu-toggle');
+            const overlay = document.getElementById('mobileMenuOverlay');
             
             mobileSidebar.classList.remove('mobile-open');
             toggle.classList.remove('active');
+            overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -1628,6 +2076,106 @@
                 });
             }
         }
+
+        // Gallery functionality - NEW: Added gallery functions
+        let currentImageIndex = 0;
+        let galleryImages = [];
+
+        function initializeGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            // Create 10 gallery items
+            for (let i = 1; i <= 10; i++) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.setAttribute('data-index', i - 1);
+                
+                const img = document.createElement('img');
+                img.className = 'gallery-image';
+                img.src = `./dam${i}.jpg`;
+                img.alt = `Imagen ${i} de DAMS Agencia`;
+                img.onerror = function() {
+                    // If image fails to load, show placeholder
+                    this.style.display = 'none';
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'gallery-placeholder';
+                    placeholder.textContent = `dam${i}.jpg`;
+                    this.parentNode.appendChild(placeholder);
+                };
+                
+                galleryItem.appendChild(img);
+                galleryItem.addEventListener('click', function() {
+                    openLightbox(parseInt(this.getAttribute('data-index')));
+                });
+                
+                galleryGrid.appendChild(galleryItem);
+                
+                // Store image source for lightbox
+                galleryImages.push(`./dam${i}.jpg`);
+            }
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightboxModal = document.getElementById('lightboxModal');
+            const lightboxImage = document.getElementById('lightboxImage');
+            
+            lightboxImage.src = galleryImages[index];
+            lightboxImage.alt = `Imagen ${index + 1} de DAMS Agencia`;
+            lightboxModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightboxModal = document.getElementById('lightboxModal');
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            // Loop around if at the beginning or end
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = galleryImages[currentImageIndex];
+            lightboxImage.alt = `Imagen ${currentImageIndex + 1} de DAMS Agencia`;
+        }
+
+        // Privacy Modal Functions - NEW: Added privacy modal functions
+        function openPrivacyModal() {
+            const privacyModal = document.getElementById('privacyModal');
+            privacyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePrivacyModal() {
+            const privacyModal = document.getElementById('privacyModal');
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closePrivacyModal();
+            }
+            
+            // Navigate lightbox with arrow keys
+            if (document.getElementById('lightboxModal').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
 
         // Smooth scrolling for all navigation links
         document.addEventListener('DOMContentLoaded', function() {
@@ -1766,4 +2314,3 @@
     </script>
 </body>
 </html>
-
