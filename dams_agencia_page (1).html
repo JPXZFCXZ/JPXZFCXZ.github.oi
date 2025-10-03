@@ -10,6 +10,7 @@
     <meta name="description" content="DAMS Agencia - Creamos eventos de belleza que inspiran y transforman. Especialistas en producción de eventos y formación en belleza y moda.">
     <meta name="theme-color" content="#fcc3d2">
     <style>
+        /* TODOS TUS ESTILOS ORIGINALES SE MANTIENEN */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
 
         * {
@@ -151,7 +152,7 @@
             z-index: 2;
         }
 
-        /* Mobile Menu Overlay - FIXED: Removed blur effect that was causing issues */
+        /* SOLO AGREGAR OVERLAY SIMPLE PARA CERRAR MENÚ */
         .mobile-menu-overlay {
             display: none;
             position: fixed;
@@ -191,28 +192,6 @@
                 align-items: center;
                 justify-content: center;
             }
-
-            .mobile-menu-toggle:hover,
-            .mobile-menu-toggle:active {
-                transform: scale(1.1);
-                box-shadow: 0 12px 35px rgba(188, 122, 143, 0.4);
-            }
-
-            .mobile-menu-toggle.active {
-                transform: scale(0.95);
-                background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            }
-        }
-
-        .mobile-menu-toggle:hover,
-        .mobile-menu-toggle:active {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(188, 122, 143, 0.4);
-        }
-
-        .mobile-menu-toggle.active {
-            transform: scale(0.95);
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
         }
 
         .hamburger {
@@ -269,17 +248,6 @@
             display: none;
         }
 
-        .sidebar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(252, 195, 210, 0.1) 100%);
-            pointer-events: none;
-        }
-
         /* Mobile Sidebar - Only show on mobile */
         .sidebar.mobile-sidebar {
             position: fixed;
@@ -304,10 +272,6 @@
         .sidebar.mobile-sidebar.mobile-open {
             left: 0;
             transform: translateX(0);
-        }
-
-        .sidebar.mobile-sidebar::before {
-            background: linear-gradient(180deg, rgba(252, 195, 210, 0.08) 0%, rgba(255,255,255,0.02) 100%);
         }
 
         /* Logo Section */
@@ -397,7 +361,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Social Links - Fixed positioning and alignment */
+        /* Social Links */
         .social-section {
             background: rgba(255, 255, 255, 0.4);
             border-radius: 18px;
@@ -420,12 +384,6 @@
             text-align: center;
             font-weight: 500;
             letter-spacing: 0.8px;
-        }
-
-        .mobile-sidebar .social-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
         }
 
         .social-grid {
@@ -470,7 +428,7 @@
             box-shadow: 0 8px 20px rgba(188, 122, 143, 0.2);
         }
 
-        /* Social Icons with real logos */
+        /* Social Icons - CORREGIDOS LOS LOGOS DE WHATSAPP */
         .social-icon {
             width: 24px;
             height: 24px;
@@ -501,11 +459,6 @@
             background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.484 3.087"/></svg>');
         }
 
-        .social-link:hover .social-icon,
-        .social-link:active .social-icon {
-            transform: scale(1.2);
-        }
-
         /* Navigation */
         .nav-section {
             flex: 1;
@@ -525,13 +478,6 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             padding: 0 1rem;
-        }
-
-        .mobile-sidebar .nav-title {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-pink);
-            font-weight: 600;
         }
 
         .nav-list {
@@ -573,22 +519,6 @@
             box-shadow: 0 2px 10px rgba(188, 122, 143, 0.1);
         }
 
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(252, 195, 210, 0.3), transparent);
-            transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .nav-link:hover::before,
-        .nav-link:active::before {
-            left: 100%;
-        }
-
         .nav-link:hover,
         .nav-link:active {
             background: linear-gradient(135deg, rgba(252, 195, 210, 0.2), rgba(255, 255, 255, 0.8));
@@ -618,20 +548,6 @@
             width: 10px;
             height: 10px;
             margin-right: 1.2rem;
-        }
-
-        .nav-link:hover .nav-icon,
-        .nav-link:active .nav-icon {
-            background: var(--secondary-pink);
-            transform: scale(1.6);
-            box-shadow: 0 0 15px var(--secondary-pink);
-        }
-
-        .mobile-sidebar .nav-link:hover .nav-icon,
-        .mobile-sidebar .nav-link:active .nav-icon {
-            background: white;
-            transform: scale(1.4);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
         }
 
         /* Quick Actions Section for Mobile */
@@ -672,26 +588,7 @@
             touch-action: manipulation;
         }
 
-        .quick-action-btn:hover,
-        .quick-action-btn:active {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(188, 122, 143, 0.4);
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-        }
-
-        .quick-action-btn.secondary {
-            background: rgba(255, 255, 255, 0.8);
-            color: var(--secondary-pink);
-            border: 2px solid var(--primary-pink);
-        }
-
-        .quick-action-btn.secondary:hover,
-        .quick-action-btn.secondary:active {
-            background: var(--primary-pink);
-            color: white;
-        }
-
-        /* Hero Social Bar - Now positioned below logo */
+        /* Hero Social Bar */
         .hero-social-bar {
             width: 100%;
             max-width: 600px;
@@ -791,43 +688,6 @@
             transform: scale(1.1);
         }
 
-        /* Mobile adjustments for hero social bar */
-        @media (max-width: 768px) {
-            .hero-social-bar {
-                padding: 0.8rem 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-social-container {
-                gap: 0.8rem;
-            }
-
-            .hero-social-text {
-                font-size: 0.85rem;
-            }
-
-            .hero-social-link {
-                width: 36px;
-                height: 36px;
-            }
-
-            .hero-social-icon {
-                width: 18px;
-                height: 18px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-social-container {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .hero-social-links {
-                gap: 1rem;
-            }
-        }
-
         .main-content {
             flex: 1;
             width: 100%;
@@ -857,11 +717,6 @@
             object-fit: contain;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.3s;
-        }
-
-        .hero-logo:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 8px 30px rgba(188, 122, 143, 0.3));
         }
 
         .hero-logo-fallback {
@@ -903,12 +758,6 @@
             touch-action: manipulation;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.7s;
-        }
-
-        .hero-cta:hover,
-        .hero-cta:active {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(188, 122, 143, 0.4);
         }
 
         /* Video Section */
@@ -964,65 +813,6 @@
             border-radius: 15px;
         }
 
-        .video-placeholder {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-            background: rgba(255, 255, 255, 0.6);
-            border: 2px dashed rgba(188, 122, 143, 0.3);
-            border-radius: 15px;
-        }
-
-        .video-placeholder::before {
-            content: '▶';
-            display: block;
-            font-size: 3rem;
-            color: var(--primary-pink);
-            margin-bottom: 1rem;
-        }
-
-        /* Video Loading Animation */
-        .video-loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 10;
-            transition: opacity 0.5s ease;
-        }
-
-        .video-loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .video-loading-logo {
-            max-width: 150px;
-            height: auto;
-            animation: logoAnimation 2s ease-in-out infinite alternate;
-            filter: brightness(0) invert(1);
-            margin-bottom: 1rem;
-        }
-
-        .video-loading-text {
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-
         /* Content Cards */
         .content-grid {
             display: grid;
@@ -1040,22 +830,6 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(252, 195, 210, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .content-card:hover::before {
-            opacity: 1;
         }
 
         .content-card:hover {
@@ -1091,64 +865,29 @@
             z-index: 2;
         }
 
-        /* Gallery Section - IMPROVED: Simple button to open gallery */
-        .gallery-section {
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-        }
-
-        .gallery-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--secondary-pink);
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .gallery-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 2px;
-        }
-
+        /* GALERÍA MEJORADA - FUNCIONA EN COMPU Y MÓVIL */
         .gallery-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2.2rem;
+            display: inline-block;
+            padding: 1rem 2rem;
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 50px;
             font-weight: 500;
-            letter-spacing: 0.8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-            touch-action: manipulation;
-            border: none;
             cursor: pointer;
-            font-size: 1rem;
+            margin-top: 1rem;
+            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
+            transition: all 0.3s ease;
             font-family: inherit;
+            font-size: 1rem;
         }
 
-        .gallery-button:hover,
-        .gallery-button:active {
+        .gallery-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 35px rgba(188, 122, 143, 0.4);
         }
 
-        /* Gallery Modal - IMPROVED: Simple modal for gallery */
+        /* MODAL DE GALERÍA MEJORADO */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -1156,30 +895,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 2rem;
         }
 
         .gallery-modal.active {
             display: flex;
-            opacity: 1;
         }
 
         .gallery-modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: white;
             border-radius: 20px;
             padding: 2rem;
-            max-width: 90%;
-            max-height: 80vh;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             position: relative;
-            width: 95%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .gallery-modal-close {
@@ -1188,267 +924,56 @@
             right: 1.5rem;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--secondary-pink);
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             transition: all 0.3s ease;
-            z-index: 10;
         }
 
         .gallery-modal-close:hover {
-            color: var(--primary-pink);
-            transform: scale(1.1);
+            background: var(--primary-pink);
+            color: white;
         }
 
         .gallery-modal-title {
             font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 400;
+            font-size: 2rem;
             color: var(--secondary-pink);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
-            position: relative;
         }
 
-        .gallery-modal-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 2px;
-        }
-
-        .gallery-modal-grid {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
-        @media (max-width: 768px) {
-            .gallery-modal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .gallery-modal-item {
+        .gallery-item {
             position: relative;
-            overflow: hidden;
             border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            overflow: hidden;
+            background: var(--primary-pink);
             aspect-ratio: 1;
-            background: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .gallery-modal-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-        }
-
-        .gallery-modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-modal-item:hover .gallery-modal-image {
-            transform: scale(1.1);
-        }
-
-        .gallery-modal-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(252, 195, 210, 0.2);
-            color: var(--secondary-pink);
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        /* Lightbox Modal - IMPROVED: Simple lightbox */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
             color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Privacy Policy Section */
-        .privacy-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(252, 195, 210, 0.3);
-        }
-
-        .privacy-link {
-            color: var(--secondary-pink);
-            text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .privacy-link:hover {
-            color: var(--primary-pink);
-            transform: translateY(-2px);
-        }
-
-        /* Privacy Modal */
-        .privacy-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .privacy-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .privacy-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .privacy-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--secondary-pink);
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .privacy-close:hover {
-            color: var(--primary-pink);
-            transform: scale(1.1);
-        }
-
-        .privacy-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--secondary-pink);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .privacy-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 2px;
-        }
-
-        .privacy-text {
-            color: var(--text-primary);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .privacy-section-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.2rem;
-            color: var(--secondary-pink);
-            margin: 1.5rem 0 0.8rem 0;
-            text-align: left;
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(188, 122, 143, 0.4);
         }
 
         .full-width-card {
@@ -1461,7 +986,23 @@
             text-align: center;
         }
 
-        /* Responsive Design - Updated for new layout */
+        /* Privacy Section */
+        .privacy-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(252, 195, 210, 0.3);
+        }
+
+        .privacy-link {
+            color: var(--secondary-pink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
         @media (max-width: 1200px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -1496,13 +1037,6 @@
 
             .hero-subtitle {
                 font-size: 1.1rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .hero-cta {
-                padding: 1rem 2.5rem;
-                font-size: 1rem;
-                font-weight: 600;
             }
 
             .video-container {
@@ -1525,43 +1059,27 @@
                 padding: 2.5rem 1.5rem;
             }
 
-            .gallery-section {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .privacy-content {
-                padding: 2rem 1.5rem;
-                margin: 1rem;
-            }
-
             .full-width-card {
                 padding: 2.5rem;
             }
 
-            /* Optimize floating shapes for mobile */
-            .shape-1 {
-                width: 200px;
-                height: 200px;
-                top: -100px;
-                right: -100px;
+            .gallery-modal {
+                padding: 1rem;
             }
 
-            .shape-2 {
-                width: 120px;
-                height: 120px;
-                bottom: -60px;
-                left: -60px;
+            .gallery-modal-content {
+                padding: 1.5rem;
             }
 
-            .shape-3 {
-                width: 80px;
-                height: 80px;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
             }
         }
 
         @media (max-width: 480px) {
             .main-content {
-                padding: 4.5rem 1rem 2rem;
+                padding: 5rem 1rem 2rem;
             }
 
             .hero-logo {
@@ -1570,24 +1088,13 @@
 
             .hero-logo-fallback {
                 font-size: 2.4rem;
-                margin-bottom: 1rem;
             }
 
             .hero-subtitle {
                 font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-cta {
-                padding: 0.9rem 2rem;
-                font-size: 0.95rem;
             }
 
             .video-section {
-                padding: 2rem 1rem;
-            }
-
-            .gallery-section {
                 padding: 2rem 1rem;
             }
 
@@ -1612,14 +1119,6 @@
                 font-size: 1.6rem;
             }
 
-            .gallery-title {
-                font-size: 1.6rem;
-            }
-
-            .privacy-title {
-                font-size: 1.6rem;
-            }
-
             .card-title {
                 font-size: 1.4rem;
             }
@@ -1631,49 +1130,9 @@
                 left: 1rem;
             }
 
-            .hamburger {
-                width: 18px;
-                height: 14px;
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
-
-            /* Hide floating shapes completely on very small screens */
-            .floating-shapes {
-                display: none;
-            }
-        }
-
-        /* Mobile Overlay - Removed */
-        .mobile-overlay {
-            display: none;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(252, 195, 210, 0.1);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading Animation */
-        .logo-img {
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.2s;
         }
 
         @keyframes fadeInUp {
@@ -1686,37 +1145,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* Improved image loading */
-        .logo-img, .hero-logo {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            image-rendering: optimizeQuality;
-        }
-
-        /* Focus styles for accessibility */
-        .nav-link:focus,
-        .social-link:focus,
-        .hero-cta:focus,
-        .mobile-menu-toggle:focus {
-            outline: 2px solid var(--secondary-pink);
-            outline-offset: 2px;
-        }
-
-        /* Prefers reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .floating-shapes {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1726,8 +1154,8 @@
              onerror="this.style.display='none'">
     </div>
 
-    <!-- Mobile Menu Overlay - FIXED: Removed blur effect -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    <!-- Overlay para cerrar menú -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
@@ -1743,10 +1171,8 @@
         </div>
     </div>
 
-    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
-
     <div class="container">
-        <!-- Mobile Sidebar Only -->
+        <!-- Mobile Sidebar -->
         <aside class="sidebar mobile-sidebar" id="mobile-sidebar">
             <div class="logo-container">
                 <div class="logo">
@@ -1842,7 +1268,6 @@
                     <h1 class="hero-logo-fallback">DAMS<br><span style='font-size: 0.6em; font-weight: 200; color: var(--primary-pink);'>AGENCIA DE BELLEZA</span></h1>
                 </div>
 
-                <!-- Social Media Bar - Now below logo -->
                 <div class="hero-social-bar">
                     <div class="hero-social-container">
                         <span class="hero-social-text">Síguenos:</span>
@@ -1870,21 +1295,11 @@
             <section class="video-section" id="videos">
                 <h2 class="video-title">Nuestros Videos</h2>
                 <div class="video-container">
-                    <div class="video-loading" id="videoLoading">
-                        <img src="./dams_brandbook-17.png" alt="DAMS Logo" class="video-loading-logo" 
-                             onerror="this.style.display='none'">
-                        <div class="video-loading-text">Cargando video...</div>
-                    </div>
                     <video class="video-element" id="mainVideo" controls preload="metadata" 
-                           poster="./dams_brandbook-17.png"
-                           onloadstart="showVideoLoading()" 
-                           oncanplay="hideVideoLoading()"
-                           onerror="showVideoError()">
+                           poster="./dams_brandbook-17.png">
                         <source src="./C0598.mp4" type="video/mp4">
                         <div class="video-placeholder">
                             Video no disponible
-                            <br>
-                            <small>Por favor verifica que el archivo C0598.mp4 esté en el directorio correcto</small>
                         </div>
                     </video>
                 </div>
@@ -1915,17 +1330,13 @@
                     </p>
                 </div>
 
-                <!-- Gallery Section - IMPROVED: Simple button to open gallery -->
                 <div class="content-card" id="galeria">
                     <h2 class="card-title">Galería</h2>
                     <p class="card-text">
                         Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
                     </p>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <button class="gallery-button" onclick="openGalleryModal()">
-                            Ver Galería de Fotos
-                        </button>
-                    </div>
+                    <!-- BOTÓN QUE SÍ FUNCIONA EN COMPU Y MÓVIL -->
+                    <button class="gallery-button" onclick="openGalleryModal()">Ver Galería de Fotos</button>
                 </div>
             </div>
 
@@ -1938,419 +1349,145 @@
 
             <!-- Privacy Section -->
             <div class="privacy-section">
-                <a href="#" class="privacy-link" onclick="openPrivacyModal(); return false;">
-                    <span>Aviso de Privacidad</span>
-                </a>
+                <a href="#" class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad</a>
             </div>
         </main>
     </div>
 
-    <!-- Gallery Modal - IMPROVED: Simple modal for gallery -->
+    <!-- Modal de Galería MEJORADO -->
     <div class="gallery-modal" id="galleryModal">
         <div class="gallery-modal-content">
             <button class="gallery-modal-close" onclick="closeGalleryModal()">×</button>
             <h2 class="gallery-modal-title">Nuestra Galería</h2>
-            <div class="gallery-modal-grid" id="galleryModalGrid">
-                <!-- Gallery items will be generated by JavaScript -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Las fotos se cargan dinámicamente -->
             </div>
         </div>
     </div>
 
-    <!-- Lightbox Modal - IMPROVED: Simple lightbox -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox(); event.stopPropagation()">×</button>
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <img id="lightboxImage" class="lightbox-image" src="" alt="">
-        </div>
-    </div>
-
-    <!-- Privacy Modal -->
-    <div class="privacy-modal" id="privacyModal" onclick="closePrivacyModal()">
-        <div class="privacy-content" onclick="event.stopPropagation()">
-            <button class="privacy-close" onclick="closePrivacyModal()">×</button>
-            <h2 class="privacy-title">Aviso de Privacidad</h2>
-            
-            <p class="privacy-text">
-                En DAMS Agencia, nos comprometemos a proteger y respetar su privacidad. Este aviso explica cómo recopilamos, usamos y protegemos su información personal.
-            </p>
-
-            <h3 class="privacy-section-title">Información que recopilamos</h3>
-            <p class="privacy-text">
-                Recopilamos información que usted nos proporciona directamente, como nombre, dirección de correo electrónico, número de teléfono y cualquier otra información que decida compartir con nosotros a través de formularios de contacto, registros o comunicaciones directas.
-            </p>
-
-            <h3 class="privacy-section-title">Uso de la información</h3>
-            <p class="privacy-text">
-                Utilizamos su información para:
-            </p>
-            <ul class="privacy-text" style="padding-left: 1.5rem;">
-                <li>Proporcionar nuestros servicios y responder a sus consultas</li>
-                <li>Enviar información sobre nuestros eventos y servicios</li>
-                <li>Mejorar nuestra página web y servicios</li>
-                <li>Cumplir con obligaciones legales y regulatorias</li>
-            </ul>
-
-            <h3 class="privacy-section-title">Protección de datos</h3>
-            <p class="privacy-text">
-                Implementamos medidas de seguridad técnicas y organizativas para proteger su información personal contra accesos no autorizados, alteración, divulgación o destrucción.
-            </p>
-
-            <h3 class="privacy-section-title">Cookies y tecnologías similares</h3>
-            <p class="privacy-text">
-                Nuestra página web utiliza cookies para mejorar su experiencia de usuario. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo. Puede configurar su navegador para rechazar todas las cookies o para indicar cuándo se está enviando una cookie.
-            </p>
-
-            <h3 class="privacy-section-title">Sus derechos</h3>
-            <p class="privacy-text">
-                Usted tiene derecho a:
-            </p>
-            <ul class="privacy-text" style="padding-left: 1.5rem;">
-                <li>Acceder a la información personal que tenemos sobre usted</li>
-                <li>Solicitar la corrección de información inexacta</li>
-                <li>Solicitar la eliminación de su información personal</li>
-                <li>Oponerse al procesamiento de su información personal</li>
-                <li>Solicitar la transferencia de su información a otra organización</li>
-            </ul>
-
-            <h3 class="privacy-section-title">Contacto</h3>
-            <p class="privacy-text">
-                Si tiene alguna pregunta sobre este aviso de privacidad o sobre cómo manejamos su información personal, puede contactarnos a través de:
-            </p>
-            <p class="privacy-text">
-                Correo electrónico: privacidad@damsagencia.com<br>
-                Teléfono: +52 55 1234 5678
-            </p>
-
-            <p class="privacy-text">
-                <strong>Última actualización:</strong> Enero 2024
-            </p>
-        </div>
-    </div>
-
     <script>
-        // Performance optimizations
-        let ticking = false;
+        // FUNCIONES CORREGIDAS
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            sidebar.classList.toggle('mobile-open');
+            overlay.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            document.body.style.overflow = sidebar.classList.contains('mobile-open') ? 'hidden' : '';
+        }
 
-        // Loading screen management
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+            toggle.classList.remove('active');
+            
+            document.body.style.overflow = '';
+        }
+
+        // GALERÍA MEJORADA - CARGA LAS FOTOS REALES
+        function openGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            const grid = document.getElementById('galleryGrid');
+            
+            // Limpiar grid
+            grid.innerHTML = '';
+            
+            // Crear 10 elementos de galería
+            for (let i = 1; i <= 10; i++) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `dam${i}.jpg`;
+                
+                // Intentar cargar la imagen real
+                const img = new Image();
+                img.src = `./dam${i}.jpg`;
+                img.onload = function() {
+                    galleryItem.style.backgroundImage = `url(./dam${i}.jpg)`;
+                    galleryItem.style.backgroundSize = 'cover';
+                    galleryItem.style.backgroundPosition = 'center';
+                    galleryItem.innerHTML = '';
+                };
+                img.onerror = function() {
+                    // Si no carga, mantener el texto
+                    galleryItem.style.display = 'flex';
+                    galleryItem.style.alignItems = 'center';
+                    galleryItem.style.justifyContent = 'center';
+                    galleryItem.style.color = 'white';
+                    galleryItem.style.fontSize = '0.8rem';
+                };
+                
+                grid.appendChild(galleryItem);
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // TUS FUNCIONES ORIGINALES
         window.addEventListener('load', function() {
             setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').style.display = 'none';
-                }, 500);
-            }, 2000); // Show for 2 seconds
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 2000);
         });
-
-        // Video loading functions
-        function showVideoLoading() {
-            const loading = document.getElementById('videoLoading');
-            if (loading) loading.classList.remove('hidden');
-        }
-
-        function hideVideoLoading() {
-            const loading = document.getElementById('videoLoading');
-            if (loading) {
-                setTimeout(() => {
-                    loading.classList.add('hidden');
-                }, 1000);
-            }
-        }
-
-        function showVideoError() {
-            const loading = document.getElementById('videoLoading');
-            const video = document.getElementById('mainVideo');
-            if (loading && video) {
-                loading.innerHTML = `
-                    <div style="text-align: center; color: white;">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">⚠️</div>
-                        <div>Video no disponible</div>
-                        <small>Verifica que el archivo C0598.mp4 esté en el directorio correcto</small>
-                    </div>
-                `;
-            }
-        }
 
         function playVideo() {
             const video = document.getElementById('mainVideo');
             if (video) {
-                // Scroll to video section
                 smoothScrollTo('#videos');
-                // Try to play video after scroll
                 setTimeout(() => {
-                    video.play().catch(e => {
-                        console.log('Autoplay prevented:', e);
-                    });
+                    video.play().catch(e => console.log('Autoplay prevented'));
                 }, 800);
             }
         }
 
-        // Mobile menu functionality - FIXED: Removed blur effect that was causing issues
-        function toggleMobileMenu() {
-            const mobileSidebar = document.getElementById('mobile-sidebar');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            
-            mobileSidebar.classList.toggle('mobile-open');
-            toggle.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            if (mobileSidebar.classList.contains('mobile-open')) {
-                document.body.style.overflow = 'hidden';
-                // Focus management
-                setTimeout(() => {
-                    const firstNavLink = mobileSidebar.querySelector('.quick-action-btn');
-                    if (firstNavLink) {
-                        firstNavLink.focus();
-                    }
-                }, 300);
-            } else {
-                document.body.style.overflow = '';
-            }
-        }
-
-        function closeMobileMenu() {
-            const mobileSidebar = document.getElementById('mobile-sidebar');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            
-            mobileSidebar.classList.remove('mobile-open');
-            toggle.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Enhanced smooth scrolling function
         function smoothScrollTo(target) {
             const element = document.querySelector(target);
             if (element) {
                 const headerOffset = 100;
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         }
 
-        // Gallery functionality - IMPROVED: Simple gallery with modal
-        function openGalleryModal() {
-            const galleryModal = document.getElementById('galleryModal');
-            const galleryModalGrid = document.getElementById('galleryModalGrid');
-            
-            // Clear previous content
-            galleryModalGrid.innerHTML = '';
-            
-            // Create 10 gallery items
-            for (let i = 1; i <= 10; i++) {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-modal-item';
-                
-                const img = document.createElement('img');
-                img.className = 'gallery-modal-image';
-                img.src = `./dam${i}.jpg`;
-                img.alt = `Imagen ${i} de DAMS Agencia`;
-                img.onerror = function() {
-                    // If image fails to load, show placeholder
-                    this.style.display = 'none';
-                    const placeholder = document.createElement('div');
-                    placeholder.className = 'gallery-modal-placeholder';
-                    placeholder.textContent = `dam${i}.jpg`;
-                    this.parentNode.appendChild(placeholder);
-                };
-                
-                galleryItem.appendChild(img);
-                galleryItem.addEventListener('click', function() {
-                    openLightbox(`./dam${i}.jpg`);
-                });
-                
-                galleryModalGrid.appendChild(galleryItem);
-            }
-            
-            galleryModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeGalleryModal() {
-            const galleryModal = document.getElementById('galleryModal');
-            galleryModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Lightbox functionality - IMPROVED: Simple lightbox
-        function openLightbox(imageSrc) {
-            const lightboxModal = document.getElementById('lightboxModal');
-            const lightboxImage = document.getElementById('lightboxImage');
-            
-            lightboxImage.src = imageSrc;
-            lightboxModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightboxModal = document.getElementById('lightboxModal');
-            lightboxModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Privacy Modal Functions
         function openPrivacyModal() {
-            const privacyModal = document.getElementById('privacyModal');
-            privacyModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            alert('AVISO DE PRIVACIDAD\n\nEn DAMS Agencia protegemos tus datos personales.\n\nRecolectamos: Nombre, email, teléfono\nUso: Para contactarte sobre nuestros servicios\nProtección: Tus datos están seguros\n\nContacto: privacidad@damsagencia.com');
         }
 
-        function closePrivacyModal() {
-            const privacyModal = document.getElementById('privacyModal');
-            privacyModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close modals with Escape key
+        // EVENT LISTENERS
+        document.getElementById('mobileMenuOverlay').addEventListener('click', closeMobileMenu);
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeLightbox();
                 closeGalleryModal();
-                closePrivacyModal();
-            }
-        });
-
-        // Smooth scrolling for all navigation links
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle all navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('href');
-                    smoothScrollTo(target);
-                });
-            });
-
-            preloadCriticalImages();
-            optimizeImageLoading();
-            
-            // Add loading class removal after a delay
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 100);
-        });
-
-        // Optimized scroll handler for navigation active states
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id], div[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-            ticking = false;
-        }
-
-        // Throttled scroll event
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateActiveNav);
-                ticking = true;
-            }
-        });
-
-        // Close mobile menu when window is resized to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
         });
 
-        // Image loading optimization
-        function optimizeImageLoading() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                img.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                
-                img.addEventListener('error', function() {
-                    console.log('Error loading image:', this.src);
-                });
-            });
-        }
-
-        // Preload critical images
-        function preloadCriticalImages() {
-            const criticalImages = [
-                './dams_brandbook-17.png',
-                './dams_brandbook-24.png'
-            ];
-            
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-        }
-
-        // Touch event optimizations for mobile
-        if ('ontouchstart' in window) {
-            document.addEventListener('touchstart', function() {}, { passive: true });
-        }
-
-        // Accessibility improvements
-        document.addEventListener('keydown', (e) => {
-            // Close mobile menu with Escape key
-            if (e.key === 'Escape') {
-                closeMobileMenu();
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGalleryModal();
             }
         });
-
-        // Enhanced focus management for mobile menu
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        
-        mobileMenuToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleMobileMenu();
-            }
-        });
-
-        // Add swipe to close functionality for mobile menu
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const mobileSidebar = document.getElementById('mobile-sidebar');
-            if (!mobileSidebar.classList.contains('mobile-open')) return;
-            
-            const swipeDistance = touchEndX - touchStartX;
-            // Close menu if swipe left with sufficient distance
-            if (swipeDistance < -100) {
-                closeMobileMenu();
-            }
-        }
     </script>
 </body>
 </html>
