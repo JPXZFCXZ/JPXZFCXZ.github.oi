@@ -10,9 +10,6 @@
     <meta name="description" content="DAMS Agencia - Creamos eventos de belleza que inspiran y transforman. Especialistas en producción de eventos y formación en belleza y moda.">
     <meta name="theme-color" content="#fcc3d2">
     <style>
-        /* TODOS TUS ESTILOS ORIGINALES SE MANTIENEN */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -46,7 +43,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Loading Animation */
+        /* Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -75,122 +72,32 @@
         }
 
         @keyframes logoAnimation {
-            0% {
-                transform: scale(1) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.1) rotate(3deg);
-                opacity: 1;
-            }
+            0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            100% { transform: scale(1.1) rotate(3deg); opacity: 1; }
         }
 
-        /* Floating Elements */
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            will-change: transform;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.06;
-            will-change: transform;
-        }
-
-        .shape-1 {
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, var(--secondary-pink), var(--primary-pink));
-            border-radius: 50%;
-            top: -140px;
-            right: -140px;
-            animation: floatSoft 25s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            width: 180px;
-            height: 180px;
-            background: radial-gradient(circle, var(--primary-pink), #fff0f3);
-            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-            bottom: -90px;
-            left: -90px;
-            animation: floatSoft 30s ease-in-out infinite reverse;
-        }
-
-        .shape-3 {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 25px;
-            top: 40%;
-            right: 8%;
-            animation: gentleRotate 35s linear infinite;
-        }
-
-        @keyframes floatSoft {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(20px, -20px) rotate(90deg); }
-            66% { transform: translate(-15px, 15px) rotate(180deg); }
-        }
-
-        @keyframes gentleRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Main Container */
-        .container {
-            display: flex;
-            min-height: 100vh;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* SOLO AGREGAR OVERLAY SIMPLE PARA CERRAR MENÚ */
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 999;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
-        /* Mobile Menu Toggle - Show only on mobile */
+        /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
+            position: fixed;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 1001;
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            border: none;
+            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
+            align-items: center;
+            justify-content: center;
         }
 
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: flex;
-                position: fixed;
-                top: 1.2rem;
-                left: 1.2rem;
-                z-index: 1001;
-                background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
-                border: none;
-                border-radius: 16px;
-                width: 56px;
-                height: 56px;
-                cursor: pointer;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-                touch-action: manipulation;
-                align-items: center;
-                justify-content: center;
             }
         }
 
@@ -207,277 +114,146 @@
             width: 100%;
             background: white;
             border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
         }
 
-        .hamburger span:nth-child(1) { 
-            top: 0; 
-            width: 100%;
-        }
-        .hamburger span:nth-child(2) { 
-            top: 7px; 
-            width: 75%;
-            left: 25%;
-        }
-        .hamburger span:nth-child(3) { 
-            top: 14px; 
-            width: 50%;
-            left: 50%;
-        }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 7px; }
+        .hamburger span:nth-child(3) { top: 14px; }
 
         .mobile-menu-toggle.active .hamburger span:nth-child(1) {
             transform: rotate(45deg);
             top: 7px;
-            width: 100%;
         }
 
         .mobile-menu-toggle.active .hamburger span:nth-child(2) {
             opacity: 0;
-            transform: translateX(20px);
         }
 
         .mobile-menu-toggle.active .hamburger span:nth-child(3) {
             transform: rotate(-45deg);
             top: 7px;
-            width: 100%;
-            left: 0;
         }
 
-        /* Sidebar - Hidden on desktop */
-        .sidebar {
+        /* Mobile Overlay - CORREGIDO */
+        .mobile-overlay {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
         }
 
-        /* Mobile Sidebar - Only show on mobile */
-        .sidebar.mobile-sidebar {
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Mobile Sidebar - CORREGIDO */
+        .mobile-sidebar {
             position: fixed;
             top: 0;
             left: -100%;
-            width: 100vw;
+            width: 85%;
             max-width: 380px;
             height: 100vh;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            padding: 3rem 0 2rem 0;
+            background: white;
+            z-index: 999;
+            padding: 2rem 1rem;
+            transition: left 0.3s ease;
             overflow-y: auto;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-            transform: translateX(-100%);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
         }
 
-        .sidebar.mobile-sidebar.mobile-open {
+        .mobile-sidebar.active {
             left: 0;
-            transform: translateX(0);
         }
 
-        /* Logo Section */
         .logo-container {
             text-align: center;
             margin-bottom: 2rem;
-            position: relative;
-            z-index: 3;
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.2rem;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .logo:hover {
-            transform: scale(1.08) rotate(3deg);
-        }
-
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: softPulse 3s ease-in-out infinite;
-        }
-
-        .logo-inner {
-            width: 100%;
-            height: 100%;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 15px 35px rgba(188, 122, 143, 0.2);
-        }
-
-        .logo-img {
-            max-width: 60px;
-            max-height: 60px;
-            width: auto;
-            height: auto;
-            filter: brightness(0) invert(1);
-            transition: all 0.3s ease;
-            object-fit: contain;
-        }
-
-        .logo-fallback {
             color: white;
-            font-weight: 600;
-            font-size: 1.8rem;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        @keyframes softPulse {
-            0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.02); opacity: 0.6; }
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
         .brand-name {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 500;
+            font-size: 1.4rem;
             color: var(--secondary-pink);
-            margin-bottom: 0.4rem;
-            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
         }
 
         .brand-tagline {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            margin-bottom: 2rem;
         }
 
-        /* Social Links */
         .social-section {
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 18px;
-            padding: 1.8rem;
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-sidebar .social-section {
-            margin: 1rem;
-            padding: 1.5rem;
             background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
 
         .social-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--secondary-pink);
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
             text-align: center;
-            font-weight: 500;
-            letter-spacing: 0.8px;
         }
 
         .social-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-        }
-
-        .mobile-sidebar .social-grid {
             grid-template-columns: 1fr;
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
 
         .social-link {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
             padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            border-radius: 12px;
+            background: white;
+            border-radius: 8px;
             text-decoration: none;
             color: var(--text-primary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: left;
-            touch-action: manipulation;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
         }
 
-        .mobile-sidebar .social-link {
-            padding: 1rem 1.2rem;
-            font-size: 1rem;
-            border-radius: 15px;
+        .social-link:hover {
+            background: var(--primary-pink);
+            color: white;
         }
 
-        .social-link:hover,
-        .social-link:active {
-            background: linear-gradient(135deg, var(--primary-pink), rgba(255, 255, 255, 0.9));
-            transform: translateY(-2px) scale(1.02);
-            color: var(--secondary-pink);
-            box-shadow: 0 8px 20px rgba(188, 122, 143, 0.2);
-        }
-
-        /* Social Icons - CORREGIDOS LOS LOGOS DE WHATSAPP */
         .social-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 0.8rem;
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
             border-radius: 4px;
-            flex-shrink: 0;
-            transition: all 0.4s ease;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
         }
 
-        .mobile-sidebar .social-icon {
-            width: 28px;
-            height: 28px;
-            margin-right: 1rem;
-        }
-
-        .social-icon.facebook {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234267B2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>');
-        }
-
-        .social-icon.instagram {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(%23instagram-gradient)"><defs><linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f58529;stop-opacity:1" /><stop offset="25%" style="stop-color:%23dd2a7b;stop-opacity:1" /><stop offset="75%" style="stop-color:%238134af;stop-opacity:1" /></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>');
-        }
-
-        .social-icon.whatsapp {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.484 3.087"/></svg>');
-        }
-
-        /* Navigation */
         .nav-section {
-            flex: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-sidebar .nav-section {
-            margin-bottom: 3rem;
-            padding: 0 1rem;
+            margin: 2rem 0;
         }
 
         .nav-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--secondary-pink);
-            margin-bottom: 1.2rem;
-            font-weight: 500;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0 1rem;
         }
 
         .nav-list {
@@ -485,409 +261,116 @@
         }
 
         .nav-item {
-            margin-bottom: 0.2rem;
-        }
-
-        .mobile-sidebar .nav-item {
             margin-bottom: 0.5rem;
         }
 
         .nav-link {
             display: flex;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1rem;
             color: var(--text-primary);
             text-decoration: none;
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-            touch-action: manipulation;
-            margin: 0 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .mobile-sidebar .nav-link {
-            padding: 1.2rem 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            margin-bottom: 0.8rem;
-            box-shadow: 0 2px 10px rgba(188, 122, 143, 0.1);
-        }
-
-        .nav-link:hover,
-        .nav-link:active {
-            background: linear-gradient(135deg, rgba(252, 195, 210, 0.2), rgba(255, 255, 255, 0.8));
-            transform: translateX(8px);
-            color: var(--secondary-pink);
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.2);
-        }
-
-        .mobile-sidebar .nav-link:hover,
-        .mobile-sidebar .nav-link:active {
-            transform: translateY(-3px) scale(1.02);
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+        .nav-link:hover {
+            background: var(--primary-pink);
             color: white;
-            box-shadow: 0 12px 35px rgba(188, 122, 143, 0.3);
         }
 
         .nav-icon {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: var(--primary-pink);
             border-radius: 50%;
             margin-right: 1rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .mobile-sidebar .nav-icon {
-            width: 10px;
-            height: 10px;
-            margin-right: 1.2rem;
-        }
-
-        /* Quick Actions Section for Mobile */
-        .mobile-quick-actions {
-            display: none;
-            padding: 0 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .mobile-sidebar .mobile-quick-actions {
-            display: block;
-        }
-
-        .quick-action-title {
-            font-size: 1rem;
-            color: var(--secondary-pink);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0 0.5rem;
-        }
-
-        .quick-action-btn {
-            display: block;
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
-            color: white;
-            text-decoration: none;
-            border-radius: 18px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-            margin-bottom: 1rem;
-            touch-action: manipulation;
-        }
-
-        /* Hero Social Bar */
-        .hero-social-bar {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(252, 195, 210, 0.3);
-            border-radius: 20px;
-            padding: 1rem 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.6s;
-        }
-
-        .hero-social-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-social-text {
-            font-size: 0.95rem;
-            color: var(--secondary-pink);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-social-links {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-        }
-
-        .hero-social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(252, 195, 210, 0.3);
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-social-link:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-            border-color: var(--primary-pink);
-        }
-
-        .hero-social-link.facebook:hover {
-            background: #4267B2;
-            border-color: #4267B2;
-        }
-
-        .hero-social-link.instagram:hover {
-            background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
-            border-color: #E4405F;
-        }
-
-        .hero-social-link.whatsapp:hover,
-        .hero-social-link.whatsapp2:hover {
-            background: #25D366;
-            border-color: #25D366;
-        }
-
-        .hero-social-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .hero-social-icon.facebook {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234267B2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>');
-        }
-
-        .hero-social-icon.instagram {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f58529;stop-opacity:1" /><stop offset="25%" style="stop-color:%23dd2a7b;stop-opacity:1" /><stop offset="75%" style="stop-color:%238134af;stop-opacity:1" /></linearGradient></defs><path fill="url(%23ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>');
-        }
-
-        .hero-social-icon.whatsapp,
-        .hero-social-icon.whatsapp2 {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.484 3.087"/></svg>');
-        }
-
-        .hero-social-link:hover .hero-social-icon {
-            filter: brightness(0) invert(1);
-            transform: scale(1.1);
-        }
-
+        /* Main Content */
         .main-content {
-            flex: 1;
+            padding: 2rem;
             width: 100%;
-            padding: 3.5rem;
-            position: relative;
-            overflow-y: auto;
+            min-height: 100vh;
         }
 
         .hero-section {
             text-align: center;
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        .hero-logo-container {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .hero-logo {
-            max-width: 300px;
-            max-height: 200px;
-            width: auto;
-            height: auto;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 20px rgba(188, 122, 143, 0.2));
-            transition: all 0.4s ease;
-            object-fit: contain;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.3s;
-        }
-
-        .hero-logo-fallback {
-            display: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--secondary-pink);
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 15px rgba(188, 122, 143, 0.1);
-            letter-spacing: -1px;
-            line-height: 1.1;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.3s;
+            max-width: 200px;
+            margin: 0 auto 1rem;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.5s;
+            margin-bottom: 2rem;
         }
 
         .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2.2rem;
+            display: inline-block;
+            padding: 1rem 2rem;
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 25px;
             font-weight: 500;
-            letter-spacing: 0.8px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
-            touch-action: manipulation;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.7s;
         }
 
-        /* Video Section */
-        .video-section {
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(188, 122, 143, 0.4);
         }
 
-        .video-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--secondary-pink);
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .video-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 2px;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(0, 0, 0, 0.9);
-            border-radius: 15px;
-            padding: 0;
-            min-height: 450px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-element {
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        /* Content Cards */
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .content-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            border-radius: 18px;
-            padding: 2.2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .content-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(188, 122, 143, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .card-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 400;
+            font-size: 1.3rem;
             color: var(--secondary-pink);
-            margin-bottom: 1.3rem;
-            position: relative;
+            margin-bottom: 1rem;
         }
 
-        .card-title::after {
-            content: '';
-            position: absolute;
-            bottom: -0.4rem;
-            left: 0;
-            width: 45px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 2px;
-        }
-
-        .card-text {
-            color: var(--text-primary);
-            line-height: 1.7;
-            font-weight: 300;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* GALERÍA MEJORADA - FUNCIONA EN COMPU Y MÓVIL */
         .gallery-button {
             display: inline-block;
             padding: 1rem 2rem;
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
             color: white;
             border: none;
-            border-radius: 50px;
-            font-weight: 500;
+            border-radius: 25px;
+            font-size: 1rem;
             cursor: pointer;
             margin-top: 1rem;
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
             transition: all 0.3s ease;
-            font-family: inherit;
-            font-size: 1rem;
         }
 
         .gallery-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(188, 122, 143, 0.4);
+            box-shadow: 0 5px 15px rgba(188, 122, 143, 0.4);
         }
 
-        /* MODAL DE GALERÍA MEJORADO */
+        /* Gallery Modal - MEJORADO */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -899,7 +382,7 @@
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .gallery-modal.active {
@@ -915,7 +398,6 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .gallery-modal-close {
@@ -942,7 +424,6 @@
         }
 
         .gallery-modal-title {
-            font-family: 'Inter', sans-serif;
             font-size: 2rem;
             color: var(--secondary-pink);
             margin-bottom: 2rem;
@@ -953,22 +434,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .gallery-item {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
-            background: var(--primary-pink);
+            background: #f8f9fa;
             aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 0.9rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 2px solid var(--primary-pink);
         }
 
         .gallery-item:hover {
@@ -976,95 +455,51 @@
             box-shadow: 0 10px 25px rgba(188, 122, 143, 0.4);
         }
 
-        .full-width-card {
-            grid-column: 1 / -1;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(252, 195, 210, 0.2);
-            border-radius: 18px;
-            padding: 2.8rem;
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .image-placeholder {
+            color: var(--secondary-pink);
+            font-size: 0.8rem;
             text-align: center;
+            padding: 1rem;
+        }
+
+        .full-width-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
         }
 
         /* Privacy Section */
         .privacy-section {
-            margin-top: 3rem;
             text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(252, 195, 210, 0.3);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(188, 122, 143, 0.3);
         }
 
         .privacy-link {
             color: var(--secondary-pink);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
             cursor: pointer;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-content {
-                padding: 2.5rem;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .sidebar.mobile-sidebar {
-                display: flex;
-            }
-
             .main-content {
-                padding: 2rem 1.5rem;
-                width: 100%;
-            }
-
-            .hero-logo {
-                max-width: 280px;
-            }
-
-            .hero-logo-fallback {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .video-container {
-                min-height: 250px;
-            }
-
-            .video-element {
-                min-height: 250px;
-            }
-
-            .content-card {
-                padding: 2rem;
-            }
-
-            .card-title {
-                font-size: 1.5rem;
-            }
-
-            .video-section {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .full-width-card {
-                padding: 2.5rem;
-            }
-
-            .gallery-modal {
-                padding: 1rem;
+                padding: 5rem 1.5rem 2rem;
             }
 
             .gallery-modal-content {
@@ -1082,67 +517,8 @@
                 padding: 5rem 1rem 2rem;
             }
 
-            .hero-logo {
-                max-width: 220px;
-            }
-
-            .hero-logo-fallback {
-                font-size: 2.4rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .video-section {
-                padding: 2rem 1rem;
-            }
-
-            .video-container {
-                min-height: 200px;
-            }
-
-            .video-element {
-                min-height: 200px;
-            }
-
-            .content-card {
-                padding: 1.8rem;
-            }
-
-            .sidebar.mobile-sidebar {
-                width: 92%;
-                max-width: 350px;
-            }
-
-            .video-title {
-                font-size: 1.6rem;
-            }
-
-            .card-title {
-                font-size: 1.4rem;
-            }
-
-            .mobile-menu-toggle {
-                width: 50px;
-                height: 50px;
-                top: 1rem;
-                left: 1rem;
-            }
-
             .gallery-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
     </style>
@@ -1150,281 +526,202 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <img src="./dams_brandbook-17.png" alt="DAMS Logo" class="loading-logo" 
-             onerror="this.style.display='none'">
+        <div class="logo">DAMS</div>
     </div>
 
-    <!-- Overlay para cerrar menú -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
-
-    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menú de navegación">
+    <!-- Mobile Menu -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
         <div class="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-    </div>
+    </button>
 
-    <div class="container">
-        <!-- Mobile Sidebar -->
-        <aside class="sidebar mobile-sidebar" id="mobile-sidebar">
-            <div class="logo-container">
-                <div class="logo">
-                    <div class="logo-inner">
-                        <img src="./dams_brandbook-24.png" alt="DAMS Logo" class="logo-img" 
-                             onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=&quot;logo-fallback&quot;>DAMS</span>'">
-                    </div>
-                </div>
-                <div class="brand-name">DAMS</div>
-                <p class="brand-tagline">AGENCIA DE BELLEZA</p>
-            </div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-            <div class="social-section">
-                <h4 class="social-title">Síguenos</h4>
-                <div class="social-grid">
-                    <a href="https://www.facebook.com/DAMS.AGENCIA/" target="_blank" rel="noopener noreferrer" class="social-link" onclick="closeMobileMenu()">
-                        <div class="social-icon facebook"></div>
-                        Facebook
-                    </a>
-                    <a href="https://www.instagram.com/dams.agencia/" target="_blank" rel="noopener noreferrer" class="social-link" onclick="closeMobileMenu()">
-                        <div class="social-icon instagram"></div>
-                        Instagram
-                    </a>
-                    <a href="https://wa.me/message/JXZ5VYPXUG2JL1" target="_blank" rel="noopener noreferrer" class="social-link" onclick="closeMobileMenu()">
-                        <div class="social-icon whatsapp"></div>
-                        WhatsApp Principal
-                    </a>
-                    <a href="https://wa.me/message/A2H24QWXKJ65G1" target="_blank" rel="noopener noreferrer" class="social-link" onclick="closeMobileMenu()">
-                        <div class="social-icon whatsapp"></div>
-                        WhatsApp Secundario
-                    </a>
-                </div>
-            </div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="logo-container">
+            <div class="logo">DAMS</div>
+            <div class="brand-name">DAMS</div>
+            <p class="brand-tagline">AGENCIA DE BELLEZA</p>
+        </div>
 
-            <div class="mobile-quick-actions">
-                <h4 class="quick-action-title">Acciones Rápidas</h4>
-                <a href="#videos" class="quick-action-btn" onclick="closeMobileMenu()">
-                    Ver Videos
+        <div class="social-section">
+            <h4 class="social-title">Síguenos</h4>
+            <div class="social-grid">
+                <a href="https://www.facebook.com/DAMS.AGENCIA/" target="_blank" class="social-link" onclick="closeMobileMenu()">
+                    <div class="social-icon"></div>
+                    Facebook
                 </a>
-                <a href="https://wa.me/message/JXZ5VYPXUG2JL1" target="_blank" rel="noopener noreferrer" class="quick-action-btn secondary" onclick="closeMobileMenu()">
-                    Contactar WhatsApp
+                <a href="https://www.instagram.com/dams.agencia/" target="_blank" class="social-link" onclick="closeMobileMenu()">
+                    <div class="social-icon"></div>
+                    Instagram
+                </a>
+                <a href="https://wa.me/message/JXZ5VYPXUG2JL1" target="_blank" class="social-link" onclick="closeMobileMenu()">
+                    <div class="social-icon"></div>
+                    WhatsApp
                 </a>
             </div>
+        </div>
 
-            <nav class="nav-section">
-                <h3 class="nav-title">Navegar</h3>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#inicio" class="nav-link" onclick="smoothScrollTo('#inicio'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#videos" class="nav-link" onclick="smoothScrollTo('#videos'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Videos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#mision" class="nav-link" onclick="smoothScrollTo('#mision'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Misión
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#vision" class="nav-link" onclick="smoothScrollTo('#vision'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Visión
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#servicios" class="nav-link" onclick="smoothScrollTo('#servicios'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Servicios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#galeria" class="nav-link" onclick="openGalleryModal(); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Galería
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+        <nav class="nav-section">
+            <h3 class="nav-title">Navegar</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#inicio" class="nav-link" onclick="closeMobileMenu()">
+                        <span class="nav-icon"></span>
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#videos" class="nav-link" onclick="closeMobileMenu()">
+                        <span class="nav-icon"></span>
+                        Videos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#galeria" class="nav-link" onclick="openGalleryModal(); closeMobileMenu()">
+                        <span class="nav-icon"></span>
+                        Galería
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
-        <main class="main-content">
-            <section class="hero-section" id="inicio">
-                <div class="hero-logo-container">
-                    <img src="./dams_brandbook-17.png" alt="DAMS - Agencia de Belleza" class="hero-logo" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <h1 class="hero-logo-fallback">DAMS<br><span style='font-size: 0.6em; font-weight: 200; color: var(--primary-pink);'>AGENCIA DE BELLEZA</span></h1>
-                </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero-section" id="inicio">
+            <div class="hero-logo">DAMS LOGO</div>
+            <p class="hero-subtitle">Creamos eventos de belleza que inspiran y transforman</p>
+            <a href="#videos" class="hero-cta">Ver nuestro trabajo</a>
+        </section>
 
-                <div class="hero-social-bar">
-                    <div class="hero-social-container">
-                        <span class="hero-social-text">Síguenos:</span>
-                        <div class="hero-social-links">
-                            <a href="https://www.facebook.com/DAMS.AGENCIA/" target="_blank" rel="noopener noreferrer" class="hero-social-link facebook" title="Facebook">
-                                <div class="hero-social-icon facebook"></div>
-                            </a>
-                            <a href="https://www.instagram.com/dams.agencia/" target="_blank" rel="noopener noreferrer" class="hero-social-link instagram" title="Instagram">
-                                <div class="hero-social-icon instagram"></div>
-                            </a>
-                            <a href="https://wa.me/message/JXZ5VYPXUG2JL1" target="_blank" rel="noopener noreferrer" class="hero-social-link whatsapp" title="WhatsApp">
-                                <div class="hero-social-icon whatsapp"></div>
-                            </a>
-                            <a href="https://wa.me/message/A2H24QWXKJ65G1" target="_blank" rel="noopener noreferrer" class="hero-social-link whatsapp2" title="WhatsApp 2">
-                                <div class="hero-social-icon whatsapp2"></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="hero-subtitle">Creamos eventos de belleza que inspiran y transforman</p>
-                <a href="#videos" class="hero-cta" onclick="playVideo()">Ver nuestro trabajo</a>
-            </section>
-
-            <section class="video-section" id="videos">
-                <h2 class="video-title">Nuestros Videos</h2>
-                <div class="video-container">
-                    <video class="video-element" id="mainVideo" controls preload="metadata" 
-                           poster="./dams_brandbook-17.png">
-                        <source src="./C0598.mp4" type="video/mp4">
-                        <div class="video-placeholder">
-                            Video no disponible
-                        </div>
-                    </video>
-                </div>
-            </section>
-
-            <div class="content-grid">
-                <div class="content-card" id="mision">
-                    <h2 class="card-title">Misión</h2>
-                    <p class="card-text">
-                        En DAMS Agencia trabajamos para diseñar, producir y ejecutar eventos y experiencias de formación en el ámbito de la belleza, el estilismo y la moda, con un enfoque en la excelencia, la innovación y la profesionalización del sector.
-                    </p>
-                </div>
-
-                <div class="content-card" id="vision">
-                    <h2 class="card-title">Visión</h2>
-                    <p class="card-text">
-                        Consolidarnos como la agencia líder en México en producción de eventos y programas formativos en belleza y moda, reconocida a nivel nacional e internacional por la calidad de nuestras propuestas.
-                    </p>
-                </div>
-
-                <div class="content-card" id="servicios">
-                    <h2 class="card-title">Servicios</h2>
-                    <p class="card-text">
-                        • Producción de eventos de belleza<br>
-                        • Programas de formación especializada<br>
-                        • Workshops y masterclasses<br>
-                        • Consultoría en imagen y estilismo
-                    </p>
-                </div>
-
-                <div class="content-card" id="galeria">
-                    <h2 class="card-title">Galería</h2>
-                    <p class="card-text">
-                        Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
-                    </p>
-                    <!-- BOTÓN QUE SÍ FUNCIONA EN COMPU Y MÓVIL -->
-                    <button class="gallery-button" onclick="openGalleryModal()">Ver Galería de Fotos</button>
-                </div>
+        <div class="content-grid">
+            <div class="content-card">
+                <h2 class="card-title">Misión</h2>
+                <p>En DAMS Agencia trabajamos para diseñar, producir y ejecutar eventos y experiencias de formación en el ámbito de la belleza.</p>
             </div>
 
-            <div class="full-width-card">
-                <h2 class="card-title">¿Listo para crear algo extraordinario?</h2>
-                <p class="card-text">
-                    Únete a nosotros en el mundo de la belleza y la moda. Creamos experiencias que transforman, inspiran y conectan a profesionales de toda la industria.
-                </p>
+            <div class="content-card">
+                <h2 class="card-title">Visión</h2>
+                <p>Consolidarnos como la agencia líder en México en producción de eventos y programas formativos en belleza y moda.</p>
             </div>
 
-            <!-- Privacy Section -->
-            <div class="privacy-section">
-                <a href="#" class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad</a>
+            <div class="content-card">
+                <h2 class="card-title">Servicios</h2>
+                <p>• Producción de eventos de belleza<br>
+                   • Programas de formación<br>
+                   • Workshops y masterclasses</p>
             </div>
-        </main>
-    </div>
 
-    <!-- Modal de Galería MEJORADO -->
+            <div class="content-card" id="galeria">
+                <h2 class="card-title">Galería</h2>
+                <p>Explora nuestro portafolio de eventos realizados.</p>
+                <button class="gallery-button" onclick="openGalleryModal()">Ver Galería de Fotos</button>
+            </div>
+        </div>
+
+        <div class="full-width-card">
+            <h2 class="card-title">¿Listo para crear algo extraordinario?</h2>
+            <p>Únete a nosotros en el mundo de la belleza y la moda. Creamos experiencias que transforman, inspiran y conectan a profesionales de toda la industria.</p>
+        </div>
+
+        <div class="privacy-section">
+            <a href="#" class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad</a>
+        </div>
+    </main>
+
+    <!-- Gallery Modal -->
     <div class="gallery-modal" id="galleryModal">
         <div class="gallery-modal-content">
             <button class="gallery-modal-close" onclick="closeGalleryModal()">×</button>
             <h2 class="gallery-modal-title">Nuestra Galería</h2>
             <div class="gallery-grid" id="galleryGrid">
-                <!-- Las fotos se cargan dinámicamente -->
+                <!-- Las imágenes se cargan aquí dinámicamente -->
             </div>
         </div>
     </div>
 
     <script>
-        // FUNCIONES CORREGIDAS
+        // FUNCIONES CORREGIDAS - BARRA LATERAL FUNCIONAL
         function toggleMobileMenu() {
-            const sidebar = document.getElementById('mobile-sidebar');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            const toggle = document.querySelector('.mobile-menu-toggle');
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const toggle = document.getElementById('mobileMenuToggle');
             
-            sidebar.classList.toggle('mobile-open');
+            sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             toggle.classList.toggle('active');
             
-            document.body.style.overflow = sidebar.classList.contains('mobile-open') ? 'hidden' : '';
+            // Prevenir scroll del body cuando el menú está abierto
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
         }
 
         function closeMobileMenu() {
-            const sidebar = document.getElementById('mobile-sidebar');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            const toggle = document.querySelector('.mobile-menu-toggle');
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const toggle = document.getElementById('mobileMenuToggle');
             
-            sidebar.classList.remove('mobile-open');
+            sidebar.classList.remove('active');
             overlay.classList.remove('active');
             toggle.classList.remove('active');
             
             document.body.style.overflow = '';
         }
 
-        // GALERÍA MEJORADA - CARGA LAS FOTOS REALES
+        // GALERÍA MEJORADA - CARGA IMÁGENES DESDE GITHUB
         function openGalleryModal() {
             const modal = document.getElementById('galleryModal');
             const grid = document.getElementById('galleryGrid');
             
-            // Limpiar grid
+            // Limpiar grid primero
             grid.innerHTML = '';
             
-            // Crear 10 elementos de galería
-            for (let i = 1; i <= 10; i++) {
+            // Array con las URLs de las imágenes - AJUSTA ESTAS URLs CON TUS IMÁGENES REALES EN GITHUB
+            const imageUrls = [
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam1.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam2.jpg', 
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam3.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam4.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam5.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam6.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam7.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam8.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam9.jpg',
+                'https://raw.githubusercontent.com/tuusuario/turepo/main/dam10.jpg'
+            ];
+            
+            // Crear elementos de galería para cada imagen
+            imageUrls.forEach((url, index) => {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
-                galleryItem.innerHTML = `dam${i}.jpg`;
                 
-                // Intentar cargar la imagen real
-                const img = new Image();
-                img.src = `./dam${i}.jpg`;
+                const img = document.createElement('img');
+                img.className = 'gallery-image';
+                img.alt = `Imagen ${index + 1} de DAMS Agencia`;
+                img.loading = 'lazy';
+                
+                // Intentar cargar la imagen
                 img.onload = function() {
-                    galleryItem.style.backgroundImage = `url(./dam${i}.jpg)`;
-                    galleryItem.style.backgroundSize = 'cover';
-                    galleryItem.style.backgroundPosition = 'center';
-                    galleryItem.innerHTML = '';
-                };
-                img.onerror = function() {
-                    // Si no carga, mantener el texto
-                    galleryItem.style.display = 'flex';
-                    galleryItem.style.alignItems = 'center';
-                    galleryItem.style.justifyContent = 'center';
-                    galleryItem.style.color = 'white';
-                    galleryItem.style.fontSize = '0.8rem';
+                    console.log(`Imagen ${index + 1} cargada correctamente: ${url}`);
                 };
                 
+                img.onerror = function() {
+                    console.log(`Error cargando imagen ${index + 1}: ${url}`);
+                    // Si falla, mostrar placeholder
+                    galleryItem.innerHTML = `<div class="image-placeholder">dam${index + 1}.jpg<br><small>No disponible</small></div>`;
+                };
+                
+                img.src = url;
+                
+                // Si estás usando imágenes locales en el mismo directorio, prueba esto:
+                // img.src = `./dam${index + 1}.jpg`;
+                
+                galleryItem.appendChild(img);
                 grid.appendChild(galleryItem);
-            }
+            });
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1436,45 +733,42 @@
             document.body.style.overflow = '';
         }
 
-        // TUS FUNCIONES ORIGINALES
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
+
+        // Loading screen
         window.addEventListener('load', function() {
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loadingScreen');
-                if (loadingScreen) {
-                    loadingScreen.classList.add('hidden');
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }
-            }, 2000);
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
         });
 
-        function playVideo() {
-            const video = document.getElementById('mainVideo');
-            if (video) {
-                smoothScrollTo('#videos');
-                setTimeout(() => {
-                    video.play().catch(e => console.log('Autoplay prevented'));
-                }, 800);
-            }
-        }
-
+        // Smooth scrolling
         function smoothScrollTo(target) {
             const element = document.querySelector(target);
             if (element) {
-                const headerOffset = 100;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
+        // Privacy modal
         function openPrivacyModal() {
             alert('AVISO DE PRIVACIDAD\n\nEn DAMS Agencia protegemos tus datos personales.\n\nRecolectamos: Nombre, email, teléfono\nUso: Para contactarte sobre nuestros servicios\nProtección: Tus datos están seguros\n\nContacto: privacidad@damsagencia.com');
         }
 
-        // EVENT LISTENERS
-        document.getElementById('mobileMenuOverlay').addEventListener('click', closeMobileMenu);
+        // Event listeners
+        document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
+        document.getElementById('mobileOverlay').addEventListener('click', closeMobileMenu);
+
+        // Cerrar con Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeGalleryModal();
@@ -1482,11 +776,11 @@
             }
         });
 
-        // Cerrar modal al hacer clic fuera del contenido
-        document.getElementById('galleryModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeGalleryModal();
-            }
+        // Prevenir que los clics en los enlaces del menú cierren el modal accidentalmente
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
         });
     </script>
 </body>
