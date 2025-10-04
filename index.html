@@ -248,22 +248,6 @@
             left: 0;
         }
 
-        /* Sidebar - Hidden on desktop */
-        .sidebar {
-            display: none;
-        }
-
-        .sidebar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(252, 195, 210, 0.1) 100%);
-            pointer-events: none;
-        }
-
         /* Mobile Sidebar - Only show on mobile */
         .sidebar.mobile-sidebar {
             position: fixed;
@@ -282,6 +266,7 @@
             transform: translateX(-100%);
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease;
         }
 
         .sidebar.mobile-sidebar.mobile-open {
@@ -1084,171 +1069,106 @@
             text-align: center;
         }
 
-        /* Gallery Styles */
-        .gallery-grid {
+        /* Galería de Fotos */
+        .gallery-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 0.8rem;
-            margin-top: 1.5rem;
+            gap: 10px;
+            margin-top: 1rem;
         }
 
         .gallery-item {
-            position: relative;
             width: 100%;
-            padding-bottom: 100%;
+            aspect-ratio: 1/1;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            background: rgba(252, 195, 210, 0.1);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(188, 122, 143, 0.15);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.25);
+            box-shadow: 0 5px 15px rgba(188, 122, 143, 0.3);
         }
 
-        .gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .gallery-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
+        .gallery-item:hover .gallery-img {
             transform: scale(1.1);
         }
 
-        /* Image Modal */
-        .image-modal {
+        /* Modal para imagen ampliada */
+        .modal {
             display: none;
             position: fixed;
-            z-index: 10000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .image-modal.active {
+        .modal.active {
             display: flex;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            font-size: 3rem;
-            font-weight: 300;
-            cursor: pointer;
-            z-index: 10001;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-
-        .modal-close:hover {
-            transform: rotate(90deg);
-            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
         }
 
         .modal-content {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: zoomIn 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .modal-close:hover {
+            color: var(--primary-pink);
         }
 
-        /* Gallery responsive */
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.6rem;
-            }
-
-            .modal-close {
-                top: 1rem;
-                right: 1rem;
-                font-size: 2.5rem;
-                width: 40px;
-                height: 40px;
-            }
+        /* Aviso de Privacidad */
+        .privacy-notice {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(252, 195, 210, 0.3);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-            }
+        .privacy-link {
+            color: var(--secondary-pink);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        /* Mobile Overlay - Click outside to close */
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(252, 195, 210, 0.1);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+        .privacy-link:hover {
+            color: var(--primary-pink);
+            text-decoration: underline;
         }
 
         /* Responsive Design - Updated for new layout */
@@ -1259,6 +1179,10 @@
             
             .main-content {
                 padding: 2.5rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1317,6 +1241,10 @@
 
             .full-width-card {
                 padding: 2.5rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             /* Optimize floating shapes for mobile */
@@ -1405,10 +1333,32 @@
                 height: 14px;
             }
 
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             /* Hide floating shapes completely on very small screens */
             .floating-shapes {
                 display: none;
             }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(252, 195, 210, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
         }
 
         /* Smooth scrolling */
@@ -1486,8 +1436,6 @@
         </div>
     </div>
 
-    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
-
     <div class="container">
         <!-- Mobile Sidebar Only -->
         <aside class="sidebar mobile-sidebar" id="mobile-sidebar">
@@ -1499,7 +1447,7 @@
                     </div>
                 </div>
                 <div class="brand-name">DAMS</div>
-                <p>class="brand-tagline">AGENCIA DE BELLEZA</p>
+                <p class="brand-tagline">AGENCIA DE BELLEZA</p>
             </div>
 
             <div class="social-section">
@@ -1658,39 +1606,13 @@
                     </p>
                 </div>
 
-                <div class="content-card full-width-card" id="galeria">
+                <div class="content-card" id="galeria">
                     <h2 class="card-title">Galería</h2>
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openImageModal('dam1.jpg')">
-                            <img src="./dam1.jpg" alt="Evento 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E1%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam2.jpg')">
-                            <img src="./dam2.jpg" alt="Evento 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E2%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam3.jpg')">
-                            <img src="./dam3.jpg" alt="Evento 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E3%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam4.jpg')">
-                            <img src="./dam4.jpg" alt="Evento 4" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E4%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam5.jpg')">
-                            <img src="./dam5.jpg" alt="Evento 5" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E5%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam6.jpg')">
-                            <img src="./dam6.jpg" alt="Evento 6" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E6%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam7.jpg')">
-                            <img src="./dam7.jpg" alt="Evento 7" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E7%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam8.jpg')">
-                            <img src="./dam8.jpg" alt="Evento 8" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E8%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam9.jpg')">
-                            <img src="./dam9.jpg" alt="Evento 9" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E9%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('dam10.jpg')">
-                            <img src="./dam10.jpg" alt="Evento 10" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23fcc3d2%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2214%22%3E10%3C/text%3E%3C/svg%3E'">
-                        </div>
+                    <p class="card-text">
+                        Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
+                    </p>
+                    <div class="gallery-container">
+                        <!-- Se generarán 10 imágenes de la galería -->
                     </div>
                 </div>
             </div>
@@ -1701,13 +1623,18 @@
                     Únete a nosotros en el mundo de la belleza y la moda. Creamos experiencias que transforman, inspiran y conectan a profesionales de toda la industria.
                 </p>
             </div>
+
+            <!-- Aviso de Privacidad -->
+            <div class="privacy-notice">
+                <a href="#" class="privacy-link">Aviso de Privacidad DAMS</a>
+            </div>
         </main>
     </div>
 
-    <!-- Image Modal -->
-    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
+    <!-- Modal para imagen ampliada -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <script>
@@ -1721,7 +1648,64 @@
                 setTimeout(() => {
                     document.getElementById('loadingScreen').style.display = 'none';
                 }, 500);
-            }, 2000);
+            }, 2000); // Show for 2 seconds
+            
+            // Generate gallery images
+            generateGallery();
+        });
+
+        // Generate gallery images
+        function generateGallery() {
+            const galleryContainer = document.querySelector('.gallery-container');
+            if (!galleryContainer) return;
+            
+            // Limpiar contenedor primero
+            galleryContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.onclick = function() {
+                    openModal(`./dams${i}.jpg`);
+                };
+                
+                const img = document.createElement('img');
+                img.className = 'gallery-img';
+                img.src = `./dam${i}.jpg`;
+                img.alt = `DAMS Evento ${i}`;
+                img.onerror = function() {
+                    // Si la imagen no existe, mostrar un placeholder
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0zMCAzMEg3MFY3MEgzMFYzMFoiIGZpbGw9IiNmY2MzZDIiLz4KPHBhdGggZD0iTTQwIDQwVjYwSDYwVjQwSDRaIiBmaWxsPSIjYmM3YThmIi8+Cjwvc3ZnPgo=';
+                    this.alt = 'Imagen no disponible';
+                };
+                
+                galleryItem.appendChild(img);
+                galleryContainer.appendChild(galleryItem);
+            }
+        }
+
+        // Open modal with image
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
         });
 
         // Video loading functions
@@ -1756,7 +1740,9 @@
         function playVideo() {
             const video = document.getElementById('mainVideo');
             if (video) {
+                // Scroll to video section
                 smoothScrollTo('#videos');
+                // Try to play video after scroll
                 setTimeout(() => {
                     video.play().catch(e => {
                         console.log('Autoplay prevented:', e);
@@ -1765,18 +1751,18 @@
             }
         }
 
-        // Mobile menu functionality - WITH overlay
+        // Mobile menu functionality - Without overlay
         function toggleMobileMenu() {
             const mobileSidebar = document.getElementById('mobile-sidebar');
-            const overlay = document.querySelector('.mobile-overlay');
             const toggle = document.querySelector('.mobile-menu-toggle');
             
             mobileSidebar.classList.toggle('mobile-open');
-            overlay.classList.toggle('active');
             toggle.classList.toggle('active');
             
+            // Prevent body scroll when menu is open
             if (mobileSidebar.classList.contains('mobile-open')) {
                 document.body.style.overflow = 'hidden';
+                // Focus management
                 setTimeout(() => {
                     const firstNavLink = mobileSidebar.querySelector('.quick-action-btn');
                     if (firstNavLink) {
@@ -1790,28 +1776,10 @@
 
         function closeMobileMenu() {
             const mobileSidebar = document.getElementById('mobile-sidebar');
-            const overlay = document.querySelector('.mobile-overlay');
             const toggle = document.querySelector('.mobile-menu-toggle');
             
             mobileSidebar.classList.remove('mobile-open');
-            overlay.classList.remove('active');
             toggle.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Gallery Modal Functions
-        function openImageModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            
-            modal.classList.add('active');
-            modalImg.src = './' + imageSrc;
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeImageModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -1832,6 +1800,7 @@
 
         // Smooth scrolling for all navigation links
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle all navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1843,6 +1812,7 @@
             preloadCriticalImages();
             optimizeImageLoading();
             
+            // Add loading class removal after a delay
             setTimeout(() => {
                 document.body.classList.add('loaded');
             }, 100);
@@ -1923,9 +1893,10 @@
 
         // Accessibility improvements
         document.addEventListener('keydown', (e) => {
+            // Close mobile menu with Escape key
             if (e.key === 'Escape') {
                 closeMobileMenu();
-                closeImageModal();
+                closeModal();
             }
         });
 
@@ -1957,6 +1928,7 @@
             if (!mobileSidebar.classList.contains('mobile-open')) return;
             
             const swipeDistance = touchEndX - touchStartX;
+            // Close menu if swipe left with sufficient distance
             if (swipeDistance < -100) {
                 closeMobileMenu();
             }
