@@ -802,12 +802,14 @@
             padding: 3.5rem;
             position: relative;
             overflow-y: auto;
+            z-index: 5; /* Asegurar que el contenido principal esté por encima */
         }
 
         .hero-section {
             text-align: center;
             margin-bottom: 3.5rem;
             position: relative;
+            z-index: 10; /* Asegurar que el hero esté por encima */
         }
 
         .hero-logo-container {
@@ -871,6 +873,8 @@
             touch-action: manipulation;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.7s;
+            position: relative;
+            z-index: 10; /* Asegurar que el CTA esté por encima */
         }
 
         .hero-cta:hover,
@@ -888,6 +892,8 @@
             border-radius: 20px;
             padding: 2.5rem;
             text-align: center;
+            position: relative;
+            z-index: 10; /* Asegurar que la sección de video esté por encima */
         }
 
         .video-title {
@@ -997,6 +1003,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 1.8rem;
             margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 10; /* Asegurar que las tarjetas estén por encima */
         }
 
         .content-card {
@@ -1076,6 +1084,8 @@
             gap: 15px;
             margin-top: 1rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10; /* Asegurar que la galería esté por encima */
         }
 
         .gallery-item {
@@ -1089,6 +1099,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            z-index: 10; /* Asegurar que los items estén por encima */
         }
 
         .gallery-item:hover {
@@ -1121,6 +1133,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
+            position: relative;
+            z-index: 10; /* Asegurar que el botón esté por encima */
         }
 
         .gallery-btn:hover,
@@ -1285,6 +1299,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease;
+            z-index: 10002;
         }
 
         .image-modal-close:hover {
@@ -1398,6 +1413,8 @@
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-secondary);
+            position: relative;
+            z-index: 10; /* Asegurar que el aviso esté por encima */
         }
 
         .privacy-link {
