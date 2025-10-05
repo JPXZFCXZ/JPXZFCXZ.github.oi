@@ -1069,19 +1069,20 @@
             text-align: center;
         }
 
-        /* Galería de Fotos */
+        /* GALERÍA MEJORADA - Solo 3 imágenes iniciales */
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
             margin-top: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .gallery-item {
             width: 100%;
             aspect-ratio: 1/1;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.6);
@@ -1106,8 +1107,148 @@
             transform: scale(1.1);
         }
 
+        /* Botón para abrir galería completa */
+        .gallery-btn {
+            display: block;
+            margin: 1rem auto 0;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
+        }
+
+        .gallery-btn:hover,
+        .gallery-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(188, 122, 143, 0.4);
+        }
+
+        /* Modal para galería completa */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .gallery-modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .gallery-modal-close:hover {
+            color: var(--primary-pink);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-modal-title {
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .gallery-modal-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .gallery-modal-item {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-modal-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(188, 122, 143, 0.5);
+        }
+
+        .gallery-modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-modal-item:hover .gallery-modal-img {
+            transform: scale(1.1);
+        }
+
         /* Modal para imagen ampliada */
-        .modal {
+        .image-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -1115,19 +1256,19 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
+            z-index: 10001;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .modal.active {
+        .image-modal.active {
             display: flex;
             opacity: 1;
         }
 
-        .modal-content {
+        .image-modal-content {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
@@ -1135,7 +1276,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .modal-close {
+        .image-modal-close {
             position: absolute;
             top: 20px;
             right: 30px;
@@ -1146,8 +1287,107 @@
             transition: color 0.3s ease;
         }
 
-        .modal-close:hover {
+        .image-modal-close:hover {
             color: var(--primary-pink);
+        }
+
+        /* Modal para aviso de privacidad */
+        .privacy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+        }
+
+        .privacy-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .privacy-modal-content {
+            max-width: 800px;
+            max-height: 80vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        .privacy-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--secondary-pink);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+
+        .privacy-modal-close:hover {
+            color: var(--primary-pink);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .privacy-modal-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--secondary-pink);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .privacy-modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .privacy-text {
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2rem;
+        }
+
+        .privacy-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--secondary-pink);
+            margin-bottom: 1rem;
         }
 
         /* Aviso de Privacidad */
@@ -1164,6 +1404,7 @@
             color: var(--secondary-pink);
             text-decoration: none;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .privacy-link:hover {
@@ -1171,7 +1412,7 @@
             text-decoration: underline;
         }
 
-        /* Responsive Design - Updated for new layout */
+        /* Responsive Design */
         @media (max-width: 1200px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -1179,10 +1420,6 @@
             
             .main-content {
                 padding: 2.5rem;
-            }
-
-            .gallery-container {
-                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1243,8 +1480,31 @@
                 padding: 2.5rem;
             }
 
+            /* Galería responsive */
             .gallery-container {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-modal-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .gallery-modal-content {
+                padding: 1.5rem;
+            }
+            
+            .gallery-modal-title {
+                font-size: 1.5rem;
+            }
+
+            /* Aviso de privacidad responsive */
+            .privacy-modal-content {
+                padding: 2rem;
+            }
+
+            .privacy-modal-title {
+                font-size: 1.5rem;
             }
 
             /* Optimize floating shapes for mobile */
@@ -1334,7 +1594,30 @@
             }
 
             .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            /* Galería modal responsive */
+            .gallery-modal-container {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .gallery-modal-content {
+                padding: 1rem;
+            }
+            
+            .gallery-modal-title {
+                font-size: 1.3rem;
+            }
+
+            /* Aviso de privacidad responsive */
+            .privacy-modal-content {
+                padding: 1.5rem;
+            }
+
+            .privacy-modal-title {
+                font-size: 1.3rem;
             }
 
             /* Hide floating shapes completely on very small screens */
@@ -1394,7 +1677,9 @@
         .nav-link:focus,
         .social-link:focus,
         .hero-cta:focus,
-        .mobile-menu-toggle:focus {
+        .mobile-menu-toggle:focus,
+        .gallery-btn:focus,
+        .privacy-link:focus {
             outline: 2px solid var(--secondary-pink);
             outline-offset: 2px;
         }
@@ -1611,9 +1896,10 @@
                     <p class="card-text">
                         Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
                     </p>
-                    <div class="gallery-container">
-                        <!-- Se generarán 10 imágenes de la galería -->
+                    <div class="gallery-container" id="mainGallery">
+                        <!-- Solo se mostrarán 3 imágenes inicialmente -->
                     </div>
+                    <button class="gallery-btn" id="galleryBtn">Ver galería completa</button>
                 </div>
             </div>
 
@@ -1626,15 +1912,98 @@
 
             <!-- Aviso de Privacidad -->
             <div class="privacy-notice">
-                <a href="#" class="privacy-link">Aviso de Privacidad DAMS</a>
+                <a class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad DAMS</a>
             </div>
         </main>
     </div>
 
     <!-- Modal para imagen ampliada -->
-    <div class="modal" id="imageModal">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div class="image-modal" id="imageModal">
+        <span class="image-modal-close" id="imageModalClose">&times;</span>
+        <img class="image-modal-content" id="imageModalImg">
+    </div>
+
+    <!-- Modal para galería completa -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-modal-content">
+            <span class="gallery-modal-close" id="galleryModalClose">&times;</span>
+            <h2 class="gallery-modal-title">Galería Completa DAMS</h2>
+            <div class="gallery-modal-container" id="galleryModalContainer">
+                <!-- Aquí se mostrarán las 10 imágenes -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para aviso de privacidad -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="privacy-modal-close" id="privacyModalClose">&times;</span>
+            <h2 class="privacy-modal-title">Aviso de Privacidad DAMS</h2>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">1. Responsable del tratamiento de sus datos personales</h3>
+                <p class="privacy-text">
+                    DAMS Agencia, con domicilio en [Dirección], es responsable del tratamiento de los datos personales que nos proporcione.
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">2. Finalidades del tratamiento de datos personales</h3>
+                <p class="privacy-text">
+                    Sus datos personales serán utilizados para las siguientes finalidades:<br>
+                    • Proporcionar los servicios y productos que ha solicitado<br>
+                    • Informar sobre cambios en nuestros servicios<br>
+                    • Evaluar la calidad del servicio<br>
+                    • Realizar estudios internos sobre hábitos de consumo
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">3. Datos personales que recabamos</h3>
+                <p class="privacy-text">
+                    Recabamos los siguientes datos personales:<br>
+                    • Nombre completo<br>
+                    • Correo electrónico<br>
+                    • Número telefónico<br>
+                    • Información de contacto
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">4. Transferencia de datos personales</h3>
+                <p class="privacy-text">
+                    Sus datos personales pueden ser transferidos y tratados dentro y fuera del país por personas distintas a esta empresa.
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">5. Derechos ARCO</h3>
+                <p class="privacy-text">
+                    Usted tiene derecho a acceder, rectificar y cancelar sus datos personales, así como a oponerse al tratamiento de los mismos o revocar el consentimiento que para tal fin nos haya otorgado.
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">6. Cambios al aviso de privacidad</h3>
+                <p class="privacy-text">
+                    Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad.
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3 class="privacy-section-title">7. Contacto</h3>
+                <p class="privacy-text">
+                    Para cualquier duda o aclaración respecto al tratamiento de su información, puede contactarnos a través de:<br>
+                    • Correo electrónico: privacidad@damsagencia.com<br>
+                    • Teléfono: [Número de teléfono]<br>
+                    • Dirección: [Dirección completa]
+                </p>
+            </div>
+            
+            <p class="privacy-text">
+                <strong>Fecha de última actualización:</strong> [Fecha]
+            </p>
+        </div>
     </div>
 
     <script>
@@ -1651,22 +2020,64 @@
             }, 2000); // Show for 2 seconds
             
             // Generate gallery images
-            generateGallery();
+            generateMainGallery();
+            generateGalleryModal();
+            
+            // Configurar eventos del botón de galería
+            const galleryBtn = document.getElementById('galleryBtn');
+            if (galleryBtn) {
+                galleryBtn.addEventListener('click', openGalleryModal);
+            }
+            
+            // Configurar eventos de cierre de modales
+            const galleryModalClose = document.getElementById('galleryModalClose');
+            if (galleryModalClose) {
+                galleryModalClose.addEventListener('click', closeGalleryModal);
+            }
+            
+            const imageModalClose = document.getElementById('imageModalClose');
+            if (imageModalClose) {
+                imageModalClose.addEventListener('click', closeImageModal);
+            }
+            
+            const privacyModalClose = document.getElementById('privacyModalClose');
+            if (privacyModalClose) {
+                privacyModalClose.addEventListener('click', closePrivacyModal);
+            }
+            
+            // Cerrar modales al hacer clic fuera del contenido
+            document.getElementById('galleryModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeGalleryModal();
+                }
+            });
+            
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeImageModal();
+                }
+            });
+            
+            document.getElementById('privacyModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePrivacyModal();
+                }
+            });
         });
 
-        // Generate gallery images
-        function generateGallery() {
-            const galleryContainer = document.querySelector('.gallery-container');
-            if (!galleryContainer) return;
+        // Generar imágenes para la galería principal (solo 3)
+        function generateMainGallery() {
+            const mainGallery = document.getElementById('mainGallery');
+            if (!mainGallery) return;
             
-            // Limpiar contenedor primero
-            galleryContainer.innerHTML = '';
+            mainGallery.innerHTML = '';
             
-            for (let i = 1; i <= 10; i++) {
+            // Solo mostrar 3 imágenes
+            for (let i = 1; i <= 3; i++) {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
                 galleryItem.onclick = function() {
-                    openModal(`./dam${i}.jpg`);
+                    openImageModal(`./dam${i}.jpg`);
                 };
                 
                 const img = document.createElement('img');
@@ -1680,33 +2091,84 @@
                 };
                 
                 galleryItem.appendChild(img);
-                galleryContainer.appendChild(galleryItem);
+                mainGallery.appendChild(galleryItem);
             }
         }
 
-        // Open modal with image
-        function openModal(src) {
+        // Generar imágenes para el modal de galería completa (10 imágenes)
+        function generateGalleryModal() {
+            const galleryModalContainer = document.getElementById('galleryModalContainer');
+            if (!galleryModalContainer) return;
+            
+            galleryModalContainer.innerHTML = '';
+            
+            // Mostrar las 10 imágenes
+            for (let i = 1; i <= 10; i++) {
+                const galleryModalItem = document.createElement('div');
+                galleryModalItem.className = 'gallery-modal-item';
+                galleryModalItem.onclick = function() {
+                    openImageModal(`./dam${i}.jpg`);
+                };
+                
+                const img = document.createElement('img');
+                img.className = 'gallery-modal-img';
+                img.src = `./dam${i}.jpg`;
+                img.alt = `DAMS Evento ${i}`;
+                img.onerror = function() {
+                    // Si la imagen no existe, mostrar un placeholder
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0zMCAzMEg3MFY3MEgzMFYzMFoiIGZpbGw9IiNmY2MzZDIiLz4KPHBhdGggZD0iTTQwIDQwVjYwSDYwVjQwSDRaIiBmaWxsPSIjYmM3YThmIi8+Cjwvc3ZnPgo=';
+                    this.alt = 'Imagen no disponible';
+                };
+                
+                galleryModalItem.appendChild(img);
+                galleryModalContainer.appendChild(galleryModalItem);
+            }
+        }
+
+        // Abrir modal de imagen ampliada
+        function openImageModal(src) {
             const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
+            const modalImg = document.getElementById('imageModalImg');
             
             modalImg.src = src;
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         }
 
-        // Close modal
-        function closeModal() {
+        // Cerrar modal de imagen ampliada
+        function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
         }
 
-        // Close modal when clicking outside the image
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        // Abrir modal de galería completa
+        function openGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar modal de galería completa
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Abrir modal de aviso de privacidad
+        function openPrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar modal de aviso de privacidad
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         // Video loading functions
         function showVideoLoading() {
@@ -1893,10 +2355,12 @@
 
         // Accessibility improvements
         document.addEventListener('keydown', (e) => {
-            // Close mobile menu with Escape key
+            // Close modals with Escape key
             if (e.key === 'Escape') {
                 closeMobileMenu();
-                closeModal();
+                closeImageModal();
+                closeGalleryModal();
+                closePrivacyModal();
             }
         });
 
