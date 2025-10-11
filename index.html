@@ -1878,10 +1878,10 @@
                              onerror="this.style.display='none'">
                         <div class="video-loading-text">Cargando video...</div>
                     </div>
-                    <video class="video-element" id="mainVideo" controls preload="none" 
+                    <video class="video-element" id="mainVideo" controls preload="metadata" 
                            poster="./dams_brandbook-17.png"
-                           onloadstart="showVideoLoading()" 
-                           oncanplay="hideVideoLoading()"
+                           onloadedmetadata="hideVideoLoading()"
+                           oncanplaythrough="hideVideoLoading()"
                            onerror="showVideoError()">
                         <source src="./C0598.mp4" type="video/mp4">
                         <div class="video-placeholder">
@@ -2105,7 +2105,7 @@
             if (loading) {
                 setTimeout(() => {
                     loading.classList.add('hidden');
-                }, 1000);
+                }, 500);
             }
         }
 
