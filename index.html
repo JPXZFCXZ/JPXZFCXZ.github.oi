@@ -802,14 +802,14 @@
             padding: 3.5rem;
             position: relative;
             overflow-y: auto;
-            z-index: 5; /* Asegurar que el contenido principal esté por encima */
+            z-index: 5;
         }
 
         .hero-section {
             text-align: center;
             margin-bottom: 3.5rem;
             position: relative;
-            z-index: 10; /* Asegurar que el hero esté por encima */
+            z-index: 10;
         }
 
         .hero-logo-container {
@@ -874,7 +874,7 @@
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.7s;
             position: relative;
-            z-index: 10; /* Asegurar que el CTA esté por encima */
+            z-index: 10;
         }
 
         .hero-cta:hover,
@@ -883,7 +883,7 @@
             box-shadow: 0 15px 35px rgba(188, 122, 143, 0.4);
         }
 
-        /* Video Section */
+        /* Video Section - Optimizado */
         .video-section {
             margin-bottom: 3rem;
             background: rgba(255, 255, 255, 0.4);
@@ -893,7 +893,7 @@
             padding: 2.5rem;
             text-align: center;
             position: relative;
-            z-index: 10; /* Asegurar que la sección de video esté por encima */
+            z-index: 10;
         }
 
         .video-title {
@@ -1004,7 +1004,7 @@
             gap: 1.8rem;
             margin-bottom: 2.5rem;
             position: relative;
-            z-index: 10; /* Asegurar que las tarjetas estén por encima */
+            z-index: 10;
         }
 
         .content-card {
@@ -1085,7 +1085,7 @@
             margin-top: 1rem;
             margin-bottom: 1.5rem;
             position: relative;
-            z-index: 10; /* Asegurar que la galería esté por encima */
+            z-index: 10;
         }
 
         .gallery-item {
@@ -1100,7 +1100,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            z-index: 10; /* Asegurar que los items estén por encima */
+            z-index: 10;
         }
 
         .gallery-item:hover {
@@ -1134,7 +1134,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(188, 122, 143, 0.3);
             position: relative;
-            z-index: 10; /* Asegurar que el botón esté por encima */
+            z-index: 10;
         }
 
         .gallery-btn:hover,
@@ -1306,7 +1306,7 @@
             color: var(--primary-pink);
         }
 
-        /* Modal para aviso de privacidad */
+        /* Modal para aviso de privacidad - SIMPLIFICADO */
         .privacy-modal {
             display: none;
             position: fixed;
@@ -1329,7 +1329,7 @@
         }
 
         .privacy-modal-content {
-            max-width: 800px;
+            max-width: 600px;
             max-height: 80vh;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -1390,19 +1390,8 @@
             color: var(--text-primary);
             line-height: 1.7;
             font-weight: 300;
-            margin-bottom: 1.5rem;
-        }
-
-        .privacy-section {
-            margin-bottom: 2rem;
-        }
-
-        .privacy-section-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--secondary-pink);
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         /* Aviso de Privacidad */
@@ -1414,7 +1403,7 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
             position: relative;
-            z-index: 10; /* Asegurar que el aviso esté por encima */
+            z-index: 10;
         }
 
         .privacy-link {
@@ -1497,7 +1486,6 @@
                 padding: 2.5rem;
             }
 
-            /* Galería responsive */
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1515,7 +1503,6 @@
                 font-size: 1.5rem;
             }
 
-            /* Aviso de privacidad responsive */
             .privacy-modal-content {
                 padding: 2rem;
             }
@@ -1524,7 +1511,6 @@
                 font-size: 1.5rem;
             }
 
-            /* Optimize floating shapes for mobile */
             .shape-1 {
                 width: 200px;
                 height: 200px;
@@ -1614,7 +1600,6 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Galería modal responsive */
             .gallery-modal-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -1628,7 +1613,6 @@
                 font-size: 1.3rem;
             }
 
-            /* Aviso de privacidad responsive */
             .privacy-modal-content {
                 padding: 1.5rem;
             }
@@ -1637,13 +1621,11 @@
                 font-size: 1.3rem;
             }
 
-            /* Hide floating shapes completely on very small screens */
             .floating-shapes {
                 display: none;
             }
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -1661,12 +1643,10 @@
             background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
         }
 
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Loading Animation */
         .logo-img {
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.2s;
@@ -1683,14 +1663,12 @@
             }
         }
 
-        /* Improved image loading */
         .logo-img, .hero-logo {
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             image-rendering: optimizeQuality;
         }
 
-        /* Focus styles for accessibility */
         .nav-link:focus,
         .social-link:focus,
         .hero-cta:focus,
@@ -1701,7 +1679,6 @@
             outline-offset: 2px;
         }
 
-        /* Prefers reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -1718,7 +1695,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <img src="./dams_brandbook-17.png" alt="DAMS Logo" class="loading-logo" 
              onerror="this.style.display='none'">
@@ -1739,7 +1715,6 @@
     </div>
 
     <div class="container">
-        <!-- Mobile Sidebar Only -->
         <aside class="sidebar mobile-sidebar" id="mobile-sidebar">
             <div class="logo-container">
                 <div class="logo">
@@ -1776,8 +1751,8 @@
 
             <div class="mobile-quick-actions">
                 <h4 class="quick-action-title">Acciones Rápidas</h4>
-                <a href="#videos" class="quick-action-btn" onclick="closeMobileMenu()">
-                    Ver Videos
+                <a href="#galeria" class="quick-action-btn" onclick="closeMobileMenu()">
+                    Ver Galería
                 </a>
                 <a href="https://wa.me/message/JXZ5VYPXUG2JL1" target="_blank" rel="noopener noreferrer" class="quick-action-btn secondary" onclick="closeMobileMenu()">
                     Contactar WhatsApp
@@ -1791,6 +1766,12 @@
                         <a href="#inicio" class="nav-link" onclick="smoothScrollTo('#inicio'); closeMobileMenu();">
                             <span class="nav-icon"></span>
                             Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#galeria" class="nav-link" onclick="smoothScrollTo('#galeria'); closeMobileMenu();">
+                            <span class="nav-icon"></span>
+                            Galería
                         </a>
                     </li>
                     <li class="nav-item">
@@ -1817,12 +1798,6 @@
                             Servicios
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#galeria" class="nav-link" onclick="smoothScrollTo('#galeria'); closeMobileMenu();">
-                            <span class="nav-icon"></span>
-                            Galería
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </aside>
@@ -1835,7 +1810,6 @@
                     <h1 class="hero-logo-fallback">DAMS<br><span style='font-size: 0.6em; font-weight: 200; color: var(--primary-pink);'>AGENCIA DE BELLEZA</span></h1>
                 </div>
 
-                <!-- Social Media Bar - Now below logo -->
                 <div class="hero-social-bar">
                     <div class="hero-social-container">
                         <span class="hero-social-text">Síguenos:</span>
@@ -1857,33 +1831,20 @@
                 </div>
 
                 <p class="hero-subtitle">Creamos eventos de belleza que inspiran y transforman</p>
-                <a href="#videos" class="hero-cta" onclick="playVideo()">Ver nuestro trabajo</a>
-            </section>
-
-            <section class="video-section" id="videos">
-                <h2 class="video-title">Nuestros Videos</h2>
-                <div class="video-container">
-                    <div class="video-loading" id="videoLoading">
-                        <img src="./dams_brandbook-17.png" alt="DAMS Logo" class="video-loading-logo" 
-                             onerror="this.style.display='none'">
-                        <div class="video-loading-text">Cargando video...</div>
-                    </div>
-                    <video class="video-element" id="mainVideo" controls preload="metadata" 
-                           poster="./dams_brandbook-17.png"
-                           onloadstart="showVideoLoading()" 
-                           oncanplay="hideVideoLoading()"
-                           onerror="showVideoError()">
-                        <source src="./C0598.mp4" type="video/mp4">
-                        <div class="video-placeholder">
-                            Video no disponible
-                            <br>
-                            <small>Por favor verifica que el archivo C0598.mp4 esté en el directorio correcto</small>
-                        </div>
-                    </video>
-                </div>
+                <a href="#galeria" class="hero-cta">Ver nuestro trabajo</a>
             </section>
 
             <div class="content-grid">
+                <div class="content-card" id="galeria">
+                    <h2 class="card-title">Galería</h2>
+                    <p class="card-text">
+                        Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
+                    </p>
+                    <div class="gallery-container" id="mainGallery">
+                    </div>
+                    <button class="gallery-btn" id="galleryBtn">Ver galería completa</button>
+                </div>
+
                 <div class="content-card" id="mision">
                     <h2 class="card-title">Misión</h2>
                     <p class="card-text">
@@ -1907,18 +1868,30 @@
                         • Consultoría en imagen y estilismo
                     </p>
                 </div>
-
-                <div class="content-card" id="galeria">
-                    <h2 class="card-title">Galería</h2>
-                    <p class="card-text">
-                        Explora nuestro portafolio de eventos realizados, desde desfiles de moda hasta workshops especializados que han transformado la industria de la belleza.
-                    </p>
-                    <div class="gallery-container" id="mainGallery">
-                        <!-- Solo se mostrarán 3 imágenes inicialmente -->
-                    </div>
-                    <button class="gallery-btn" id="galleryBtn">Ver galería completa</button>
-                </div>
             </div>
+
+            <section class="video-section" id="videos">
+                <h2 class="video-title">Nuestros Videos</h2>
+                <div class="video-container">
+                    <div class="video-loading" id="videoLoading">
+                        <img src="./dams_brandbook-17.png" alt="DAMS Logo" class="video-loading-logo" 
+                             onerror="this.style.display='none'">
+                        <div class="video-loading-text">Cargando video...</div>
+                    </div>
+                    <video class="video-element" id="mainVideo" controls preload="none" 
+                           poster="./dams_brandbook-17.png"
+                           onloadstart="showVideoLoading()" 
+                           oncanplay="hideVideoLoading()"
+                           onerror="showVideoError()">
+                        <source src="./C0598.mp4" type="video/mp4">
+                        <div class="video-placeholder">
+                            Video no disponible
+                            <br>
+                            <small>Por favor verifica que el archivo C0598.mp4 esté en el directorio correcto</small>
+                        </div>
+                    </video>
+                </div>
+            </section>
 
             <div class="full-width-card">
                 <h2 class="card-title">¿Listo para crear algo extraordinario?</h2>
@@ -1927,126 +1900,72 @@
                 </p>
             </div>
 
-            <!-- Aviso de Privacidad -->
             <div class="privacy-notice">
-                <a class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad DAMS</a>
+                <a class="privacy-link" onclick="openPrivacyModal()">Aviso de Privacidad</a>
             </div>
         </main>
     </div>
 
-    <!-- Modal para imagen ampliada -->
     <div class="image-modal" id="imageModal">
         <span class="image-modal-close" id="imageModalClose">&times;</span>
         <img class="image-modal-content" id="imageModalImg">
     </div>
 
-    <!-- Modal para galería completa -->
     <div class="gallery-modal" id="galleryModal">
         <div class="gallery-modal-content">
             <span class="gallery-modal-close" id="galleryModalClose">&times;</span>
             <h2 class="gallery-modal-title">Galería Completa DAMS</h2>
             <div class="gallery-modal-container" id="galleryModalContainer">
-                <!-- Aquí se mostrarán las 10 imágenes -->
             </div>
         </div>
     </div>
 
-    <!-- Modal para aviso de privacidad -->
     <div class="privacy-modal" id="privacyModal">
         <div class="privacy-modal-content">
             <span class="privacy-modal-close" id="privacyModalClose">&times;</span>
-            <h2 class="privacy-modal-title">Aviso de Privacidad DAMS</h2>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">1. Responsable del tratamiento de sus datos personales</h3>
-                <p class="privacy-text">
-                    DAMS Agencia, con domicilio en [Dirección], es responsable del tratamiento de los datos personales que nos proporcione.
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">2. Finalidades del tratamiento de datos personales</h3>
-                <p class="privacy-text">
-                    Sus datos personales serán utilizados para las siguientes finalidades:<br>
-                    • Proporcionar los servicios y productos que ha solicitado<br>
-                    • Informar sobre cambios en nuestros servicios<br>
-                    • Evaluar la calidad del servicio<br>
-                    • Realizar estudios internos sobre hábitos de consumo
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">3. Datos personales que recabamos</h3>
-                <p class="privacy-text">
-                    Recabamos los siguientes datos personales:<br>
-                    • Nombre completo<br>
-                    • Correo electrónico<br>
-                    • Número telefónico<br>
-                    • Información de contacto
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">4. Transferencia de datos personales</h3>
-                <p class="privacy-text">
-                    Sus datos personales pueden ser transferidos y tratados dentro y fuera del país por personas distintas a esta empresa.
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">5. Derechos ARCO</h3>
-                <p class="privacy-text">
-                    Usted tiene derecho a acceder, rectificar y cancelar sus datos personales, así como a oponerse al tratamiento de los mismos o revocar el consentimiento que para tal fin nos haya otorgado.
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">6. Cambios al aviso de privacidad</h3>
-                <p class="privacy-text">
-                    Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad.
-                </p>
-            </div>
-            
-            <div class="privacy-section">
-                <h3 class="privacy-section-title">7. Contacto</h3>
-                <p class="privacy-text">
-                    Para cualquier duda o aclaración respecto al tratamiento de su información, puede contactarnos a través de:<br>
-                    • Correo electrónico: privacidad@damsagencia.com<br>
-                    • Teléfono: [Número de teléfono]<br>
-                    • Dirección: [Dirección completa]
-                </p>
-            </div>
+            <h2 class="privacy-modal-title">Aviso de Privacidad</h2>
             
             <p class="privacy-text">
-                <strong>Fecha de última actualización:</strong> [Fecha]
+                <strong>DAMS Agencia</strong> respeta su privacidad. Esta página web no recopila, almacena ni procesa datos personales de los usuarios.
+            </p>
+            
+            <p class="privacy-text">
+                Al navegar por este sitio, únicamente visualiza información pública sobre nuestros servicios. No utilizamos cookies de seguimiento ni herramientas de análisis que recopilen información personal.
+            </p>
+            
+            <p class="privacy-text">
+                Si decide contactarnos a través de nuestras redes sociales o WhatsApp, estará sujeto a las políticas de privacidad de dichas plataformas.
+            </p>
+            
+            <p class="privacy-text">
+                Para cualquier consulta, puede contactarnos directamente a través de nuestros canales oficiales.
+            </p>
+            
+            <p class="privacy-text">
+                <strong>Última actualización:</strong> Octubre 2025
             </p>
         </div>
     </div>
 
     <script>
-        // Performance optimizations
         let ticking = false;
 
-        // Loading screen management
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
                 setTimeout(() => {
                     document.getElementById('loadingScreen').style.display = 'none';
                 }, 500);
-            }, 2000); // Show for 2 seconds
+            }, 1500);
             
-            // Generate gallery images
             generateMainGallery();
             generateGalleryModal();
             
-            // Configurar eventos del botón de galería
             const galleryBtn = document.getElementById('galleryBtn');
             if (galleryBtn) {
                 galleryBtn.addEventListener('click', openGalleryModal);
             }
             
-            // Configurar eventos de cierre de modales
             const galleryModalClose = document.getElementById('galleryModalClose');
             if (galleryModalClose) {
                 galleryModalClose.addEventListener('click', closeGalleryModal);
@@ -2062,7 +1981,6 @@
                 privacyModalClose.addEventListener('click', closePrivacyModal);
             }
             
-            // Cerrar modales al hacer clic fuera del contenido
             document.getElementById('galleryModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeGalleryModal();
@@ -2082,14 +2000,12 @@
             });
         });
 
-        // Generar imágenes para la galería principal (solo 3)
         function generateMainGallery() {
             const mainGallery = document.getElementById('mainGallery');
             if (!mainGallery) return;
             
             mainGallery.innerHTML = '';
             
-            // Solo mostrar 3 imágenes
             for (let i = 1; i <= 3; i++) {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
@@ -2101,8 +2017,8 @@
                 img.className = 'gallery-img';
                 img.src = `./dam${i}.jpg`;
                 img.alt = `DAMS Evento ${i}`;
+                img.loading = 'lazy';
                 img.onerror = function() {
-                    // Si la imagen no existe, mostrar un placeholder
                     this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0zMCAzMEg3MFY3MEgzMFYzMFoiIGZpbGw9IiNmY2MzZDIiLz4KPHBhdGggZD0iTTQwIDQwVjYwSDYwVjQwSDRaIiBmaWxsPSIjYmM3YThmIi8+Cjwvc3ZnPgo=';
                     this.alt = 'Imagen no disponible';
                 };
@@ -2112,14 +2028,12 @@
             }
         }
 
-        // Generar imágenes para el modal de galería completa (10 imágenes)
         function generateGalleryModal() {
             const galleryModalContainer = document.getElementById('galleryModalContainer');
             if (!galleryModalContainer) return;
             
             galleryModalContainer.innerHTML = '';
             
-            // Mostrar las 10 imágenes
             for (let i = 1; i <= 10; i++) {
                 const galleryModalItem = document.createElement('div');
                 galleryModalItem.className = 'gallery-modal-item';
@@ -2131,8 +2045,8 @@
                 img.className = 'gallery-modal-img';
                 img.src = `./dam${i}.jpg`;
                 img.alt = `DAMS Evento ${i}`;
+                img.loading = 'lazy';
                 img.onerror = function() {
-                    // Si la imagen no existe, mostrar un placeholder
                     this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0zMCAzMEg3MFY3MEgzMFYzMFoiIGZpbGw9IiNmY2MzZDIiLz4KPHBhdGggZD0iTTQwIDQwVjYwSDYwVjQwSDRaIiBmaWxsPSIjYmM3YThmIi8+Cjwvc3ZnPgo=';
                     this.alt = 'Imagen no disponible';
                 };
@@ -2142,7 +2056,6 @@
             }
         }
 
-        // Abrir modal de imagen ampliada
         function openImageModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('imageModalImg');
@@ -2152,42 +2065,36 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Cerrar modal de imagen ampliada
         function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Abrir modal de galería completa
         function openGalleryModal() {
             const modal = document.getElementById('galleryModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Cerrar modal de galería completa
         function closeGalleryModal() {
             const modal = document.getElementById('galleryModal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Abrir modal de aviso de privacidad
         function openPrivacyModal() {
             const modal = document.getElementById('privacyModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Cerrar modal de aviso de privacidad
         function closePrivacyModal() {
             const modal = document.getElementById('privacyModal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Video loading functions
         function showVideoLoading() {
             const loading = document.getElementById('videoLoading');
             if (loading) loading.classList.remove('hidden');
@@ -2216,21 +2123,6 @@
             }
         }
 
-        function playVideo() {
-            const video = document.getElementById('mainVideo');
-            if (video) {
-                // Scroll to video section
-                smoothScrollTo('#videos');
-                // Try to play video after scroll
-                setTimeout(() => {
-                    video.play().catch(e => {
-                        console.log('Autoplay prevented:', e);
-                    });
-                }, 800);
-            }
-        }
-
-        // Mobile menu functionality - Without overlay
         function toggleMobileMenu() {
             const mobileSidebar = document.getElementById('mobile-sidebar');
             const toggle = document.querySelector('.mobile-menu-toggle');
@@ -2238,10 +2130,8 @@
             mobileSidebar.classList.toggle('mobile-open');
             toggle.classList.toggle('active');
             
-            // Prevent body scroll when menu is open
             if (mobileSidebar.classList.contains('mobile-open')) {
                 document.body.style.overflow = 'hidden';
-                // Focus management
                 setTimeout(() => {
                     const firstNavLink = mobileSidebar.querySelector('.quick-action-btn');
                     if (firstNavLink) {
@@ -2262,7 +2152,6 @@
             document.body.style.overflow = '';
         }
 
-        // Enhanced smooth scrolling function
         function smoothScrollTo(target) {
             const element = document.querySelector(target);
             if (element) {
@@ -2277,9 +2166,7 @@
             }
         }
 
-        // Smooth scrolling for all navigation links
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle all navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -2288,16 +2175,11 @@
                 });
             });
 
-            preloadCriticalImages();
-            optimizeImageLoading();
-            
-            // Add loading class removal after a delay
             setTimeout(() => {
                 document.body.classList.add('loaded');
             }, 100);
         });
 
-        // Optimized scroll handler for navigation active states
         function updateActiveNav() {
             const sections = document.querySelectorAll('section[id], div[id]');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -2319,7 +2201,6 @@
             ticking = false;
         }
 
-        // Throttled scroll event
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 requestAnimationFrame(updateActiveNav);
@@ -2327,52 +2208,13 @@
             }
         });
 
-        // Close mobile menu when window is resized to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
         });
 
-        // Image loading optimization
-        function optimizeImageLoading() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                img.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                
-                img.addEventListener('error', function() {
-                    console.log('Error loading image:', this.src);
-                });
-            });
-        }
-
-        // Preload critical images
-        function preloadCriticalImages() {
-            const criticalImages = [
-                './dams_brandbook-17.png',
-                './dams_brandbook-24.png'
-            ];
-            
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-        }
-
-        // Touch event optimizations for mobile
-        if ('ontouchstart' in window) {
-            document.addEventListener('touchstart', function() {}, { passive: true });
-        }
-
-        // Accessibility improvements
         document.addEventListener('keydown', (e) => {
-            // Close modals with Escape key
             if (e.key === 'Escape') {
                 closeMobileMenu();
                 closeImageModal();
@@ -2381,7 +2223,6 @@
             }
         });
 
-        // Enhanced focus management for mobile menu
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         
         mobileMenuToggle.addEventListener('keydown', (e) => {
@@ -2391,7 +2232,6 @@
             }
         });
 
-        // Add swipe to close functionality for mobile menu
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -2409,10 +2249,13 @@
             if (!mobileSidebar.classList.contains('mobile-open')) return;
             
             const swipeDistance = touchEndX - touchStartX;
-            // Close menu if swipe left with sufficient distance
             if (swipeDistance < -100) {
                 closeMobileMenu();
             }
+        }
+
+        if ('ontouchstart' in window) {
+            document.addEventListener('touchstart', function() {}, { passive: true });
         }
     </script>
 </body>
